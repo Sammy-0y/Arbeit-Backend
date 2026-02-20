@@ -1,0 +1,273 @@
+<analysis>**original_problem_statement:**
+The user wants to build a multi-tenant web app named “Arbeit Talent Portal”. The initial phase involved creating core features like authentication, job and candidate management, and AI-powered resume parsing.
+
+The project has since expanded to include:
+1.  **Full Enterprise Governance:** A comprehensive system for RBAC, detailed audit logging, and an access matrix viewer.
+2.  **Interview Orchestration:** An end-to-end interview management system, including a new  domain model, a workflow for clients to submit interview slots, and a booking page for candidates.
+3.  **Full Notification & Reminder System:** A multi-channel system (Email, SMS, WhatsApp) to notify users of key events like new jobs, status changes, and upcoming interviews.
+4.  **Candidate Portal:** A dedicated, authenticated portal for candidates to register, log in, manage their profiles, and handle their interview scheduling.
+
+**PRODUCT REQUIREMENTS:**
+-   Clients submit job requirements through the portal.
+-   Recruiters are notified via email and in-app notifications about new jobs.
+-   Recruiters upload candidate CVs for client review.
+-   Clients review and mark candidates as Shortlisted, Not Shortlisted, or Maybe.
+-   Clients propose interview slots via a calendar interface.
+-   **Candidates must register and log in to a dedicated portal to view and book interview slots.**
+-   All parties (recruiter, client, candidate) are notified upon interview confirmation.
+-   Automated reminders are sent to candidates via SMS, Email, and WhatsApp before the interview.
+
+**User's preferred language**: English
+
+**what currently exists?**
+A full-stack application with a FastAPI backend and React frontend.
+-   **Core Features:** All original core features are functional.
+-   **Candidate Portal:** A complete, authenticated portal for candidates is now live. It includes registration, login, a dashboard for viewing upcoming interviews, and a mandatory password change on first login.
+-   **CV Parsing & AI Story Generation:** The backend can now parse PDF and DOCX files, extracting contact information, skills, and experience more accurately. The AI prompts have been improved to generate realistic job fit scores and deduplicated career timelines, fixing previous hallucination issues.
+-   **Notification System (Phase 2):** The system now handles candidate selection. An admin/recruiter can send a selection notification which creates a portal account for the candidate and emails them temporary credentials. Email templates for interview invitations have also been created.
+-   **UI/UX Enhancements:** A new All Candidates page with search and filtering has been added. Candidate cards now display the job position they applied for.
+
+**Last working item**:
+-   **Last item agent was working:** The agent was implementing a series of UI/UX and functionality enhancements based on user feedback and screenshots. This includes:
+    1.  Making dashboard summary cards (Clients, Jobs, Candidates, Interviews) clickable links.
+    2.  Adding a delete candidate feature.
+    3.  Overhauling the Client Details page to show more information and allow editing/deleting of client users.
+-   **Status:** IN PROGRESS
+-   **Agent Testing Done:** N
+-   **Which testing method agent to use?** both
+-   **User Testing Done:** N
+
+**All Pending/In progress Issue list**:
+There are no pending bugs. All user-reported issues from the session have been addressed.
+
+**In progress Task List**:
+-   **Task 1: Complete UI/UX & Functionality Enhancements (P0)**
+    -   **Description:** Finalize the implementation of user-requested improvements for dashboards and client/candidate management.
+    -   **Where to resume:** The agent has created the necessary frontend files (, ) and modified several components (, , ) to add the UI elements. However, the work is incomplete.
+        1.  **Backend for Client Management:** The backend needs to be updated. The  page was rewritten with new fields (address, website, etc.) and user management functions (edit/delete user), but the corresponding API endpoints and database models do not exist yet.
+        2.  **Testing:** Thoroughly test all the new clickable links on the Admin and Client dashboards to ensure they navigate correctly (e.g., ).
+        3.  **Testing:** Test the new Delete Candidate functionality from the  page.
+    -   **What will be achieved with this?** A more interactive and functional UI for admins and clients, and the ability to fully manage clients and candidates as requested.
+    -   **Status:** IN PROGRESS
+    -   **Should Test frontend/backend/both after fix?** both
+    -   **Blocked on something:** No.
+
+**Upcoming and Future Tasks**
+-   **Upcoming Tasks:**
+    -   **(P0) Implement Interview Invitation Flow:**
+        -   The backend now has an endpoint to send interview invitation emails and can use the Google Calendar API key. The frontend has a UI to trigger this. This flow needs to be fully wired and tested end-to-end. This includes creating the meeting link (manually or automatically) and sending the templated email.
+    -   **(P1) Implement Reminder Engine:**
+        -   Integrate a service like Twilio (via the Pica API) to send automated SMS and WhatsApp reminders for scheduled interviews.
+    -   **(P1) Update Candidate Status Terminology:**
+        -   Refactor the candidate status logic and UI to use Shortlisted, Not Shortlisted, and Maybe, replacing the current APPROVED and REJECTED states.
+-   **Future Tasks:**
+    -   **Backend Refactoring:** Decompose the monolithic  into smaller modules.
+    -   **Deprecate Public Booking Page:** Remove the old public, token-based booking page ().
+    -   **UI/UX Polish:** Conduct a final review of the application's UI/UX.
+
+**Completed work in this session**
+-   **Candidate Portal Implemented:** Created a fully functional and authenticated candidate portal with registration, login, and a password-change-on-first-login flow.
+-   **CV Parsing Engine V2:**
+    -   Added support for parsing PDF (usage: pdfplumber [-h] [--structure | --structure-text]
+                  [--format {csv,json,text}] [--types TYPES [TYPES ...]]
+                  [--include-attrs INCLUDE_ATTRS [INCLUDE_ATTRS ...]]
+                  [--exclude-attrs EXCLUDE_ATTRS [EXCLUDE_ATTRS ...]]
+                  [--laparams LAPARAMS] [--precision PRECISION]
+                  [--pages PAGES [PAGES ...]] [--indent INDENT]
+                  [infile]
+
+positional arguments:
+  infile
+
+options:
+  -h, --help            show this help message and exit
+  --structure           Write the structure tree as JSON. All other arguments
+                        except --pages, --laparams, and --indent will be
+                        ignored
+  --structure-text      Write the structure tree as JSON including text
+                        contents. All other arguments except --pages,
+                        --laparams, and --indent will be ignored
+  --format {csv,json,text}
+  --types TYPES [TYPES ...]
+  --include-attrs INCLUDE_ATTRS [INCLUDE_ATTRS ...]
+                        Include *only* these object attributes in output.
+  --exclude-attrs EXCLUDE_ATTRS [EXCLUDE_ATTRS ...]
+                        Exclude these object attributes from output.
+  --laparams LAPARAMS
+  --precision PRECISION
+  --pages PAGES [PAGES ...]
+  --indent INDENT       Indent level for JSON pretty-printing.) and DOCX () files.
+    -   Fixed bugs where AI was hallucinating job roles (e.g., Manual QA Tester for a Progress 4GL Developer).
+    -   Improved extraction of Name, Email, Phone, LinkedIn, Skills, and Experience.
+    -   Fixed bug causing duplicate timeline entries.
+    -   AI Job Fit score is now more realistic and not a fixed value.
+-   **Candidate Selection Notification Flow:**
+    -   Added a Send Selection Notification button for admins/recruiters.
+    -   This action now automatically creates a candidate portal account, generates a temporary password, and emails the credentials to the candidate.
+    -   The candidate status is automatically updated to SHORTLISTED upon sending the notification.
+    -   Fixed a  bug during password reset.
+    -   Fixed an emoji encoding issue in the email subject line.
+-   **New All Candidates Page:**
+    -   Created a unified page at  to view all candidates across all jobs.
+    -   Implemented search and filtering by status and job.
+    -   Made dashboard Candidates cards link to this new page.
+-   **UI/UX Fixes:**
+    -   Fixed an issue where candidate cards appeared blank by deleting corrupted data and adding a UI fallback.
+    -   Added a prominent Applied for: [Job Title] badge to each candidate card on the list page.
+    -   Diagnosed user confusion stemming from browser cache and accessing incorrect preview URLs.
+    -   Fixed navigation issue where clicking Candidates on the dashboard led to the jobs list instead of a candidate list.
+
+**Earlier issues found/mentioned but not fixed**
+-   **Issue 1: Linter Errors in **
+    -   **Debug checklist:** The  tool reported  and a function redefinition error.
+    -   **Why to solve this issue and what will be achieved with this?** Fixing these improves code quality and prevents potential bugs from swallowed exceptions.
+    -   **Should Test frontend/backend/both after fix:** backend
+    -   **Is recurring issue?** N
+
+**Known issue recurrence from previous fork**
+None.
+
+**Code Architecture**
+
+
+**Key Technical Concepts**
+-   **Backend:** FastAPI, Pydantic, JWT.
+-   **Frontend:** React, Tailwind CSS, shadcn/ui.
+-   **Database:** MongoDB.
+-   **Notifications:** Pica Passthrough API (Gmail, Google Calendar planned).
+-   **CV Parsing:** usage: pdfplumber [-h] [--structure | --structure-text]
+                  [--format {csv,json,text}] [--types TYPES [TYPES ...]]
+                  [--include-attrs INCLUDE_ATTRS [INCLUDE_ATTRS ...]]
+                  [--exclude-attrs EXCLUDE_ATTRS [EXCLUDE_ATTRS ...]]
+                  [--laparams LAPARAMS] [--precision PRECISION]
+                  [--pages PAGES [PAGES ...]] [--indent INDENT]
+                  [infile]
+
+positional arguments:
+  infile
+
+options:
+  -h, --help            show this help message and exit
+  --structure           Write the structure tree as JSON. All other arguments
+                        except --pages, --laparams, and --indent will be
+                        ignored
+  --structure-text      Write the structure tree as JSON including text
+                        contents. All other arguments except --pages,
+                        --laparams, and --indent will be ignored
+  --format {csv,json,text}
+  --types TYPES [TYPES ...]
+  --include-attrs INCLUDE_ATTRS [INCLUDE_ATTRS ...]
+                        Include *only* these object attributes in output.
+  --exclude-attrs EXCLUDE_ATTRS [EXCLUDE_ATTRS ...]
+                        Exclude these object attributes from output.
+  --laparams LAPARAMS
+  --precision PRECISION
+  --pages PAGES [PAGES ...]
+  --indent INDENT       Indent level for JSON pretty-printing. and  for file content extraction.
+-   **Authentication:** Two separate JWT flows (Internal Users, Candidates).
+
+**key DB schema**
+-   **candidate_portal_users:** 
+-   **clients:** (Needs expansion) 
+-   **client_users:** (Needs expansion) 
+
+**changes in tech stack**
+-   Added usage: pdfplumber [-h] [--structure | --structure-text]
+                  [--format {csv,json,text}] [--types TYPES [TYPES ...]]
+                  [--include-attrs INCLUDE_ATTRS [INCLUDE_ATTRS ...]]
+                  [--exclude-attrs EXCLUDE_ATTRS [EXCLUDE_ATTRS ...]]
+                  [--laparams LAPARAMS] [--precision PRECISION]
+                  [--pages PAGES [PAGES ...]] [--indent INDENT]
+                  [infile]
+
+positional arguments:
+  infile
+
+options:
+  -h, --help            show this help message and exit
+  --structure           Write the structure tree as JSON. All other arguments
+                        except --pages, --laparams, and --indent will be
+                        ignored
+  --structure-text      Write the structure tree as JSON including text
+                        contents. All other arguments except --pages,
+                        --laparams, and --indent will be ignored
+  --format {csv,json,text}
+  --types TYPES [TYPES ...]
+  --include-attrs INCLUDE_ATTRS [INCLUDE_ATTRS ...]
+                        Include *only* these object attributes in output.
+  --exclude-attrs EXCLUDE_ATTRS [EXCLUDE_ATTRS ...]
+                        Exclude these object attributes from output.
+  --laparams LAPARAMS
+  --precision PRECISION
+  --pages PAGES [PAGES ...]
+  --indent INDENT       Indent level for JSON pretty-printing. and  to the backend for CV parsing.
+
+**All files of reference**
+-   : Heavily modified with new CV parsing logic, AI prompts, and numerous new endpoints for candidate management and notifications.
+-   : Updated with new email templates for candidate selection and interview invites.
+-   : New page to list all candidates.
+-   : Updated with Send Notification and Delete buttons.
+-   : Updated to handle the mandatory password change flow.
+-   : Updated with clickable cards.
+-   : Completely rewritten with a more detailed UI; **backend support is missing**.
+-   : New page to list all interviews.
+-   : Updated to include a dialog for sending manual interview invites.
+
+**Areas that need refactoring**:
+-   The  file is now extremely large and urgently needs to be broken down into domain-specific modules.
+-   The newly rewritten  requires significant backend work to become functional.
+
+**key api endpoints**
+-   : Creates a portal account and sends credentials.
+-   : For the first-time password reset flow.
+-   : Fetches all candidates for the new  page.
+-   : Deletes a candidate.
+-   : Sends an interview invitation email.
+-   (Needs implementation) Endpoints for updating client details and managing client users.
+
+**Critical Info for New Agent**
+-   **Priority 1:** Finish the UI enhancements from the last user request. This primarily involves building the **backend logic** for the new  page (updating client info, adding/editing/deleting client users).
+-   **Priority 2:** Wire up and test the complete interview invitation flow. The frontend UI and backend endpoint stubs are there, but the full logic (including Google Calendar integration) needs to be implemented and verified.
+-   The user has previously been confused by browser caching and using incorrect preview URLs. Be prepared to gently guide them to hard-refresh or use the correct link if they report that the UI is not updating.
+-   The application now has two distinct user-facing portals: the main app for Admin/Client/Recruiter roles and the Candidate Portal for applicants.
+
+**documents and test reports created in this job**
+-    (updated multiple times)
+-   
+
+**Last 10 User Messages and any pending HUMAN messages**
+1.  **User:** Requested to add the Applied for job position to candidate cards. (Completed)
+2.  **User:** Initiated the implementation of the full notification and candidate selection flow. (Completed)
+3.  **User:** Reported bugs: password reset error (Internal Server Error) and garbled emoji in email subject. Requested an interview invitation email template and Google Calendar integration. (Completed)
+4.  **User:** Provided screenshots and asked to make dashboard stat cards clickable to view underlying data. (In Progress)
+5.  **User:** Pointed out the lack of a delete candidate option. (In Progress)
+6.  **User:** Requested more detailed fields and edit capabilities for Client and Client User details. (In Progress)
+7.  **User:** Asked why clicking Candidates on the homepage leads to Job Requirements. (Completed)
+8.  **User:** Reported duplicate timeline entries for a candidate (Tinu Tiwari) and that the client panel was not showing updated data. (Completed - identified as user viewing wrong URL).
+9.  **User:** Reported blank candidate cards and incorrect fit scores after uploading a new CV. (Completed)
+10. **User:** Reported several issues with AI parsing: incorrect story, fixed job fit score, and missing data from the CV. (Completed)
+
+**Project Health Check:**
+-   **Broken:** The Client Detail page is broken as it was rewritten on the frontend without the necessary backend support.
+-   **Mocked:** SMS/WhatsApp notifications are planned but not implemented.
+
+**3rd Party Integrations**
+-   **OpenAI:** Uses a User-provided API Key for resume parsing.
+-   **Pica Passthrough API:**
+    -   **Gmail:** Configured and working for sending notifications.
+    -   **Google Calendar:** API key is present in , ready for integration into the interview scheduling flow.
+    -   **Twilio (SMS/WhatsApp):** Planned, not implemented.
+
+**Testing status**
+-   **Testing agent used after significant changes:** YES (for Candidate Portal).
+-   **Troubleshoot agent used after agent stuck in loop:** NO
+-   **Test files created:** None.
+-   **Known regressions:** None.
+
+**Credentials to test flow:**
+-   **Admin:**  / 
+-   **Client:**  / 
+-   **Candidate:** Accounts are now created automatically via the Send Selection Notification feature. The temporary password will be sent to the candidate's email.
+
+**What agent forgot to execute**
+-   The agent rewrote the  page to add significant new functionality (editing client details, managing client users) but did not implement any of the required backend models or API endpoints to support it. This is the most critical piece of unfinished work.</analysis>
