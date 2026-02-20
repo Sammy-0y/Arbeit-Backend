@@ -17,7 +17,6 @@ import uuid
 import re
 import json
 import secrets
-from emergentintegrations.llm.chat import LlmChat, UserMessage
 from openai import AsyncOpenAI
 
 # PDF and DOCX parsing
