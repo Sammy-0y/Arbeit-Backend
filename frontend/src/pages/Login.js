@@ -79,111 +79,83 @@ export const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-teal-50">
-      <Card className="w-full max-w-md shadow-xl" data-testid="login-card">
-        <CardHeader className="space-y-1">
-          <CardTitle className="text-3xl font-bold text-blue-900" data-testid="login-title">
-            Arbeit Talent Portal
-          </CardTitle>
-          <CardDescription className="text-base" data-testid="login-description">
-            Sign in to your account
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <form onSubmit={handleSubmit} className="space-y-4" data-testid="login-form">
-            <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
-              <Input
-                id="email"
-                type="email"
-                placeholder="you@company.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                data-testid="email-input"
-                className="h-11"
-              />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="password">Password</Label>
-              <Input
-                id="password"
-                type="password"
-                placeholder="••••••••"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-                data-testid="password-input"
-                className="h-11"
-              />
-            </div>
-            <Button
-              type="submit"
-              className="w-full h-11 bg-blue-900 hover:bg-blue-800 text-white font-medium"
-              disabled={loading}
-              data-testid="login-button"
-            >
-              {loading ? 'Signing in...' : 'Sign In'}
-            </Button>
-          </form>
-        </CardContent>
-      </Card>
+  <div className="min-h-screen flex flex-col lg:flex-row">
 
-      {/* Password Change Dialog */}
-      <Dialog open={showPasswordChange} onOpenChange={() => {}}>
-        <DialogContent className="sm:max-w-md" hideCloseButton>
-          <DialogHeader>
-            <DialogTitle className="flex items-center gap-2">
-              <Lock className="h-5 w-5 text-amber-600" />
-              Password Change Required
-            </DialogTitle>
-            <DialogDescription>
-              For security reasons, you must change your password before continuing.
-            </DialogDescription>
-          </DialogHeader>
-          
-          <div className="bg-amber-50 border border-amber-200 rounded-lg p-3 flex items-start gap-2">
-            <AlertTriangle className="h-5 w-5 text-amber-600 flex-shrink-0 mt-0.5" />
-            <p className="text-sm text-amber-800">
-              This is required for all new accounts and after password resets.
-            </p>
+    {/* LEFT LOGIN SECTION */}
+    <div className="w-full lg:w-1/2 flex items-center justify-center bg-gray-50 px-8 py-12">
+
+      <div className="w-full max-w-md">
+
+        {/* LOGO */}
+        <img 
+          src="/logo.png"   // 🔥 CHANGE LOGO HERE
+          alt="Company Logo"
+          className="h-16 mb-10"
+        />
+
+        <h2 className="text-3xl font-bold text-gray-900 mb-2">
+         Workforce Management Made Simple.
+        </h2>
+
+        <p className="text-gray-500 mb-8">
+          Please enter your details
+        </p>
+
+        <form onSubmit={handleSubmit} className="space-y-6">
+
+          {/* Email */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Email address
+            </label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Example@gmail.com"
+              required
+              className="w-full border border-gray-300 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-purple-600"
+            />
           </div>
-          
-          <div className="space-y-4 py-4">
-            <div className="space-y-2">
-              <Label>New Password</Label>
-              <Input
-                type="password"
-                value={newPassword}
-                onChange={(e) => setNewPassword(e.target.value)}
-                placeholder="Enter new password"
-                data-testid="new-password-input"
-              />
-            </div>
-            <div className="space-y-2">
-              <Label>Confirm New Password</Label>
-              <Input
-                type="password"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                placeholder="Confirm new password"
-                data-testid="confirm-password-input"
-              />
-            </div>
+
+          {/* Password */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Password
+            </label>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Password Here"
+              required
+              className="w-full border border-gray-300 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-purple-600"
+            />
           </div>
-          
-          <DialogFooter>
-            <Button
-              onClick={handlePasswordChange}
-              disabled={changingPassword || !newPassword || !confirmPassword}
-              className="w-full bg-blue-600 hover:bg-blue-700"
-              data-testid="change-password-button"
-            >
-              {changingPassword ? 'Changing Password...' : 'Change Password & Continue'}
-            </Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
+
+          {/* Button */}
+          <button
+            type="submit"
+            className="w-full bg-purple-600 text-white py-3 rounded-md font-medium hover:bg-purple-700 transition duration-200"
+          >
+            Sign in
+          </button>
+
+        </form>
+
+      </div>
     </div>
-  );
+
+
+    {/* RIGHT IMAGE SECTION */}
+   <div className="hidden lg:block lg:w-1/2 h-screen relative">
+   <img
+    src="/Login-Image.jpg"
+    alt="Login Illustration"
+    className="absolute inset-0 w-full h-full object-cover"
+   />
+   </div>
+
+  </div>
+);
 };
