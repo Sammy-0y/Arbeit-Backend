@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui/ca
 import { Input } from '../../components/ui/input';
 import { Label } from '../../components/ui/label';
 import { toast } from 'sonner';
+import logo from "@/assets/logo.png";
 import { User, Mail, Lock, Phone, Linkedin, Building, Calendar, Key, AlertTriangle } from 'lucide-react';
 
 export const CandidateLogin = () => {
@@ -119,7 +120,7 @@ export const CandidateLogin = () => {
   if (showPasswordChange) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50 flex items-center justify-center p-4">
-        <div className="w-full max-w-md">
+      
           <Card className="border-0 shadow-2xl">
             <CardHeader className="text-center pb-2">
               <div className="mx-auto w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mb-4">
@@ -185,178 +186,85 @@ export const CandidateLogin = () => {
             </CardContent>
           </Card>
         </div>
-      </div>
-    );
-  }
+        );
+}
+return (
 
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50 flex items-center justify-center p-4">
-      <div className="w-full max-w-md">
-        {/* Logo/Brand */}
-        <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-indigo-900">Arbeit Talent Portal</h1>
-          <p className="text-gray-600 mt-2">Candidate Portal</p>
-        </div>
+  <div className="min-h-screen relative flex flex-col lg:flex-row">
 
-        <Card className="shadow-xl border-0">
-          <CardHeader className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-t-lg">
-            <CardTitle className="text-xl text-center">
-              {isRegister ? 'Create Account' : 'Welcome Back'}
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="p-6">
-            <form onSubmit={isRegister ? handleRegister : handleLogin} className="space-y-4">
-              {isRegister && (
-                <>
-                  <div>
-                    <Label className="flex items-center gap-2">
-                      <User className="h-4 w-4" />
-                      Full Name *
-                    </Label>
-                    <Input
-                      value={formData.name}
-                      onChange={(e) => updateField('name', e.target.value)}
-                      placeholder="John Doe"
-                      required
-                      data-testid="register-name"
-                    />
-                  </div>
+    {/* ===== Mobile Background Image ===== */}
+    <div
+      className="lg:hidden absolute inset-0 bg-cover bg-center"
+      style={{
+        backgroundImage: `url(${process.env.PUBLIC_URL}/candidate-portal.png)`
+      }}
+    />
 
-                  <div>
-                    <Label className="flex items-center gap-2">
-                      <Phone className="h-4 w-4" />
-                      Phone Number *
-                    </Label>
-                    <Input
-                      value={formData.phone}
-                      onChange={(e) => updateField('phone', e.target.value)}
-                      placeholder="+91 9876543210"
-                      required
-                      data-testid="register-phone"
-                    />
-                  </div>
-                </>
-              )}
+    {/* ===== Dark Overlay For Mobile ===== */}
+    <div className="lg:hidden absolute inset-0 bg-black/40" />
 
-              <div>
-                <Label className="flex items-center gap-2">
-                  <Mail className="h-4 w-4" />
-                  Email Address *
-                </Label>
-                <Input
-                  type="email"
-                  value={formData.email}
-                  onChange={(e) => updateField('email', e.target.value)}
-                  placeholder="you@example.com"
-                  required
-                  data-testid="login-email"
-                />
-              </div>
+    {/* ===== LEFT SIDE (Desktop Only) ===== */}
+    <div
+      className="hidden lg:block lg:w-1/2 bg-cover bg-center"
+      style={{
+        backgroundImage: `url(${process.env.PUBLIC_URL}/candidate-portal.png)`
+      }}
+    />
 
-              <div>
-                <Label className="flex items-center gap-2">
-                  <Lock className="h-4 w-4" />
-                  Password *
-                </Label>
-                <Input
-                  type="password"
-                  value={formData.password}
-                  onChange={(e) => updateField('password', e.target.value)}
-                  placeholder="••••••••"
-                  required
-                  data-testid="login-password"
-                />
-              </div>
+    {/* ===== RIGHT SIDE ===== */}
+    <div className="relative flex w-full lg:w-1/2 items-center justify-center p-6 lg:p-8">
 
-              {isRegister && (
-                <>
-                  <div>
-                    <Label className="flex items-center gap-2">
-                      <Linkedin className="h-4 w-4" />
-                      LinkedIn URL
-                    </Label>
-                    <Input
-                      value={formData.linkedin_url}
-                      onChange={(e) => updateField('linkedin_url', e.target.value)}
-                      placeholder="https://linkedin.com/in/yourprofile"
-                      data-testid="register-linkedin"
-                    />
-                  </div>
+    
 
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <Label className="flex items-center gap-2">
-                        <Building className="h-4 w-4" />
-                        Current Company
-                      </Label>
-                      <Input
-                        value={formData.current_company}
-                        onChange={(e) => updateField('current_company', e.target.value)}
-                        placeholder="Company name"
-                        data-testid="register-company"
-                      />
-                    </div>
-                    <div>
-                      <Label className="flex items-center gap-2">
-                        <Calendar className="h-4 w-4" />
-                        Experience (Years)
-                      </Label>
-                      <Input
-                        type="number"
-                        min="0"
-                        max="50"
-                        value={formData.experience_years}
-                        onChange={(e) => updateField('experience_years', e.target.value)}
-                        placeholder="5"
-                        data-testid="register-experience"
-                      />
-                    </div>
-                  </div>
-                </>
-              )}
+{/* Glass Card Effect */}
+<div className="w-full max-w-md bg-white/90 backdrop-blur-md rounded-3xl p-8 shadow-xl">
+<div className="flex justify-center mb-6">
+  <img 
+    src={logo} 
+    alt="Arbeit Logo" 
+    className="h-16 w-auto object-contain"
+  />
+</div>
+        <h1 className="text-3xl lg:text-4xl font-bold text-center mb-2">
+          Welcome To the Future
+        </h1>
 
-              <Button
-                type="submit"
-                className="w-full bg-indigo-600 hover:bg-indigo-700"
-                disabled={loading}
-                data-testid="submit-button"
-              >
-                {loading ? (
-                  <div className="flex items-center gap-2">
-                    <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                    {isRegister ? 'Creating Account...' : 'Signing In...'}
-                  </div>
-                ) : (
-                  isRegister ? 'Create Account' : 'Sign In'
-                )}
-              </Button>
-            </form>
+        <p className="text-gray-600 text-center mb-8">
+          Please login to your account
+        </p>
 
-            <div className="mt-6 text-center">
-              <button
-                onClick={() => setIsRegister(!isRegister)}
-                className="text-indigo-600 hover:text-indigo-800 text-sm"
-                data-testid="toggle-auth-mode"
-              >
-                {isRegister 
-                  ? 'Already have an account? Sign In' 
-                  : "Don't have an account? Create one"}
-              </button>
-            </div>
+        <form
+          onSubmit={isRegister ? handleRegister : handleLogin}
+          className="space-y-6"
+        >
+          <Input
+            type="email"
+            placeholder="Email address"
+            className="h-14 rounded-2xl bg-gray-100 border-none"
+            value={formData.email}
+            onChange={(e) => updateField("email", e.target.value)}
+            required
+          />
 
-            <div className="mt-4 pt-4 border-t text-center">
-              <Link 
-                to="/login" 
-                className="text-gray-500 hover:text-gray-700 text-sm"
-              >
-                Recruiter/Client Login →
-              </Link>
-            </div>
-          </CardContent>
-        </Card>
+          <Input
+            type="password"
+            placeholder="Password"
+            className="h-14 rounded-2xl bg-gray-100 border-none"
+            value={formData.password}
+            onChange={(e) => updateField("password", e.target.value)}
+            required
+          />
+
+          <Button
+            type="submit"
+            className="w-full h-14 rounded-2xl bg-blue-600 hover:bg-blue-700 text-white text-lg font-semibold"
+          >
+            Login
+          </Button>
+        </form>
+
       </div>
     </div>
-  );
+</div>
+);
 };
-
-export default CandidateLogin;
