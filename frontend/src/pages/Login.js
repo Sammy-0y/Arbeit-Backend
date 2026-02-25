@@ -97,13 +97,13 @@ export const Login = () => {
     {/* LEFT LOGIN SECTION */}
     <div className="relative z-10 w-full lg:w-1/2 flex items-center justify-center bg-transparent lg:bg-gray-50 px-8 py-12">
 
-      <div className="w-full max-w-md">
+      <div className="w-full max-w-md bg-white/80 backdrop-blur-lg rounded-3xl shadow-xl p-10">
 
         {/* LOGO */}
         <img 
           src={logo}   // 🔥 CHANGE LOGO HERE
           alt="Company Logo"
-          className="h-16 mb-10 mx-auto lg:mx-0"
+          className="h-16 mb-10 mx-auto"
         />
 
         <h2 className="text-3xl font-bold text-white lg:text-gray-900 mb-2">
