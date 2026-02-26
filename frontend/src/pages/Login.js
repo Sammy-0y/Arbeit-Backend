@@ -133,7 +133,7 @@ export const Login = () => {
 
           {/* Password */}
           <div>
-            <label className="block text-sm font-medium text-white lg:text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-black">
               Password
             </label>
             <input
