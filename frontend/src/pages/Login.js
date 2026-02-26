@@ -106,11 +106,11 @@ export const Login = () => {
           className="h-16 mb-10 mx-auto"
         />
 
-        <h2 className="text-3xl font-bold text-white lg:text-gray-900 mb-2">
+        <h2 className="text-3xl font-bold text-black mb-2">
          Workforce Management Made Simple.
         </h2>
 
-        <p className="text-gray-200 lg:text-gray-500 mb-8">
+        <p className="text-black mb-8">
           Please enter your details
         </p>
 
@@ -118,7 +118,7 @@ export const Login = () => {
 
           {/* Email */}
           <div>
-            <label className="block text-sm font-medium text-white lg:text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-black">
               Email address
             </label>
             <input
