@@ -89,38 +89,6 @@ export const ClientsList = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-teal-50">
-      <nav className="bg-blue-900 text-white p-4 shadow-lg" data-testid="clients-nav">
-        <div className="container mx-auto flex justify-between items-center">
-          <div className="flex items-center gap-4">
-            <h1 className="text-2xl font-bold cursor-pointer" onClick={() => navigate('/dashboard')}>
-              Arbeit Talent Portal
-            </h1>
-            <Badge variant="outline" className="border-white text-white">
-              Client Management
-            </Badge>
-          </div>
-          <div className="flex items-center gap-4">
-            <Button
-              onClick={() => navigate('/dashboard')}
-              variant="ghost"
-              className="text-white hover:bg-blue-800"
-              data-testid="back-to-dashboard-button"
-            >
-              Dashboard
-            </Button>
-            <span className="text-sm">{user?.name}</span>
-            <Button
-              onClick={handleLogout}
-              variant="outline"
-              className="border-white text-white hover:bg-blue-800"
-              data-testid="logout-button"
-            >
-              Logout
-            </Button>
-          </div>
-        </div>
-      </nav>
-
       <div className="container mx-auto p-8">
         <Card className="shadow-xl mb-6">
           <CardHeader className="bg-gradient-to-r from-blue-900 to-blue-800 text-white">

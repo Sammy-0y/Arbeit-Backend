@@ -210,15 +210,6 @@ export const CandidatePortalManagement = () => {
       <header className="bg-gradient-to-r from-purple-900 to-indigo-800 text-white p-4 shadow-lg">
         <div className="container mx-auto flex justify-between items-center max-w-7xl">
           <div className="flex items-center gap-4">
-            <Button
-              onClick={() => navigate('/dashboard')}
-              variant="ghost"
-              className="text-white hover:bg-white/10"
-              data-testid="back-button"
-            >
-              <ArrowLeft className="h-4 w-4 mr-2" />
-              Back to Dashboard
-            </Button>
             <div className="h-6 w-px bg-white/30" />
             <h1 className="text-xl font-bold flex items-center gap-2">
               <Users className="h-5 w-5" />
