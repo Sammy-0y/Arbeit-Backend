@@ -30,12 +30,14 @@ export default function Sidebar() {
       <div className={`sidebar ${open ? "active" : ""}`}>
 
         {/* CLOSE BUTTON */}
-        <button
-          className="close-btn"
-          onClick={() => setOpen(false)}
-        >
-          ✕
-        </button>
+        {open && (
+  <button
+    className="close-btn"
+    onClick={() => setOpen(false)}
+  >
+    ×
+  </button>
+)}
 
         <h2 className="logo">
   <img 
