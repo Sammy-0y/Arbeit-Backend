@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card'
 import { Badge } from '../components/ui/badge';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import Sidebar from "../components/Sidebar";
 import { 
   Users, 
   Briefcase, 
@@ -64,7 +65,11 @@ export const AdminDashboard = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-teal-50">
+    <div className="flex min-h-screen bg-gradient-to-br from-blue-50 to-teal-50">
+  
+  <Sidebar />
+
+  <div className="flex-1">
       <nav className="bg-blue-900 text-white p-4 shadow-lg" data-testid="admin-nav">
         <div className="container mx-auto flex justify-between items-center">
           <h1 className="text-2xl font-bold" data-testid="admin-nav-title">Arbeit Talent Portal</h1>
@@ -295,6 +300,7 @@ export const AdminDashboard = () => {
           </Card>
         )}
       </div>
+    </div>
     </div>
   );
 };
