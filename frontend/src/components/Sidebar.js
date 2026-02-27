@@ -44,14 +44,29 @@ export default function Sidebar() {
   />
 </h2>
 
-        <NavLink to="/dashboard">Dashboard</NavLink>
-        <NavLink to="/clients">Manage Clients</NavLink>
-        <NavLink to="/jobs">Job Requirements</NavLink>
-        <NavLink to="/candidates">Candidates</NavLink>
-        <NavLink to="/governance">Governance</NavLink>
-        <NavLink to="/candidate-portal-management">
-          Portal Users
-        </NavLink>
+        <NavLink to="/dashboard" onClick={() => setOpen(false)}>
+  Dashboard
+</NavLink>
+
+<NavLink to="/clients" onClick={() => setOpen(false)}>
+  Manage Clients
+</NavLink>
+
+<NavLink to="/jobs" onClick={() => setOpen(false)}>
+  Job Requirements
+</NavLink>
+
+<NavLink to="/candidates" onClick={() => setOpen(false)}>
+  Candidates
+</NavLink>
+
+<NavLink to="/governance" onClick={() => setOpen(false)}>
+  Governance
+</NavLink>
+
+<NavLink to="/candidate-portal-management" onClick={() => setOpen(false)}>
+  Portal Users
+</NavLink>
 
       </div>
     </>
