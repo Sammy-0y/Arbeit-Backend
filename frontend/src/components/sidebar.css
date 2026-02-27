@@ -68,10 +68,13 @@ left: -260px;
 
 /* ===== OVERLAY ===== */
 
-.overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 1100;
+@media (max-width: 768px) {
+  .overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 1100;
+  }
 }
 
 /* ===== MOBILE VIEW ===== */
