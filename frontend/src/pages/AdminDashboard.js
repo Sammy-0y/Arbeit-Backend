@@ -65,25 +65,6 @@ export const AdminDashboard = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-teal-50">
-      <nav className="bg-blue-900 text-white p-4 shadow-lg" data-testid="admin-nav">
-        <div className="container mx-auto flex justify-between items-center">
-          <h1 className="text-2xl font-bold" data-testid="admin-nav-title">Arbeit Talent Portal</h1>
-          <div className="flex items-center gap-4">
-            <NotificationBell />
-            <span className="text-sm" data-testid="admin-user-info">
-              {user?.name} ({user?.role})
-            </span>
-            <Button
-              onClick={handleLogout}
-              variant="outline"
-              className="border-white text-white hover:bg-blue-800"
-              data-testid="logout-button"
-            >
-              Logout
-            </Button>
-          </div>
-        </div>
-      </nav>
 
       <div className="container mx-auto p-8">
         <Card className="shadow-xl mb-8" data-testid="admin-dashboard-card">
@@ -141,85 +122,6 @@ export const AdminDashboard = () => {
                   <p className="text-2xl font-bold text-amber-900">{stats.interviews?.total_interviews || 0}</p>
                   <p className="text-sm text-gray-600">Interviews</p>
                 </div>
-              </div>
-
-              {/* Navigation Cards */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
-                <Card 
-                  className="border-2 border-blue-200 hover:shadow-lg transition-shadow cursor-pointer" 
-                  data-testid="admin-feature-clients"
-                  onClick={() => navigate('/clients')}
-                >
-                  <CardContent className="p-6">
-                    <h3 className="text-lg font-semibold text-blue-900 mb-2">Manage Clients</h3>
-                    <p className="text-gray-600 text-sm">Create and manage client companies</p>
-                    <Button className="mt-3 bg-blue-900 hover:bg-blue-800 w-full">
-                      Open
-                    </Button>
-                  </CardContent>
-                </Card>
-
-                <Card 
-                  className="border-2 border-blue-200 hover:shadow-lg transition-shadow cursor-pointer" 
-                  data-testid="admin-feature-jobs"
-                  onClick={() => navigate('/jobs')}
-                >
-                  <CardContent className="p-6">
-                    <h3 className="text-lg font-semibold text-blue-900 mb-2">Job Requirements</h3>
-                    <p className="text-gray-600 text-sm">View and manage all job postings</p>
-                    <Button className="mt-3 bg-blue-900 hover:bg-blue-800 w-full">
-                      Open
-                    </Button>
-                  </CardContent>
-                </Card>
-
-                <Card 
-                  className="border-2 border-blue-200 hover:shadow-lg transition-shadow cursor-pointer" 
-                  data-testid="admin-feature-candidates"
-                  onClick={() => navigate('/candidates')}
-                >
-                  <CardContent className="p-6">
-                    <h3 className="text-lg font-semibold text-blue-900 mb-2">Candidates</h3>
-                    <p className="text-gray-600 text-sm">View and manage all candidates</p>
-                    <Button className="mt-3 bg-blue-900 hover:bg-blue-800 w-full">
-                      Open
-                    </Button>
-                  </CardContent>
-                </Card>
-
-                <Card 
-                  className="border-2 border-amber-200 hover:shadow-lg transition-shadow cursor-pointer" 
-                  data-testid="admin-feature-governance"
-                  onClick={() => navigate('/governance')}
-                >
-                  <CardContent className="p-6">
-                    <h3 className="text-lg font-semibold text-amber-900 mb-2">
-                      <Settings className="h-5 w-5 inline mr-2" />
-                      Governance
-                    </h3>
-                    <p className="text-gray-600 text-sm">RBAC, Audit Logs & Access Control</p>
-                    <Button className="mt-3 bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 text-white w-full">
-                      Open
-                    </Button>
-                  </CardContent>
-                </Card>
-
-                <Card 
-                  className="border-2 border-purple-200 hover:shadow-lg transition-shadow cursor-pointer" 
-                  data-testid="admin-feature-portal-management"
-                  onClick={() => navigate('/candidate-portal-management')}
-                >
-                  <CardContent className="p-6">
-                    <h3 className="text-lg font-semibold text-purple-900 mb-2">
-                      <UserCog className="h-5 w-5 inline mr-2" />
-                      Portal Users
-                    </h3>
-                    <p className="text-gray-600 text-sm">Manage Candidate Portal Access</p>
-                    <Button className="mt-3 bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white w-full">
-                      Manage
-                    </Button>
-                  </CardContent>
-                </Card>
               </div>
             </div>
           </CardContent>
