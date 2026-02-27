@@ -82,7 +82,7 @@ left: -260px;
   }
 
   .sidebar {
-    left: -260px;
+    left: 0px;
     z-index: 1201;
   }
 
