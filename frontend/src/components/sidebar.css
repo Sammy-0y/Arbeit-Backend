@@ -2,18 +2,21 @@
 
 .sidebar {
   width: 250px;
-  height: calc(100vh - 40px);
+  height: calc(100vh - 96px);
   background: #F5F5F5;
 
   position: fixed;
-  top: 20px;
-left: 20px;
+  top: 96px;
+left: -260px;
 
   border-radius: 20px;
   padding: 20px;
 
   display: flex;
   flex-direction: column;
+}
+.sidebar.active {
+  left: 0;
 }
 
 .logo {
@@ -37,7 +40,7 @@ left: 20px;
 /* ===== HAMBURGER ===== */
 
 .menu-toggle {
-  display: none;
+  display: block;
   position: fixed;
   top: 5px;
   left: 15px;
