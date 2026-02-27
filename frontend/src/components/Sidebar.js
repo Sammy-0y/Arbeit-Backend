@@ -1,17 +1,59 @@
 import { NavLink } from "react-router-dom";
+import { useState } from "react";
+import React from 'react';
+import logo from '../assets/logo.png';
 import "./sidebar.css";
 
 export default function Sidebar() {
-  return (
-    <div className="sidebar">
-      <h2 className="logo">arbeit</h2>
 
-      <NavLink to="/dashboard">Dashboard</NavLink>
-      <NavLink to="/clients">Manage Clients</NavLink>
-      <NavLink to="/jobs">Job Requirements</NavLink>
-      <NavLink to="/candidates">Candidates</NavLink>
-      <NavLink to="/governance">Governance</NavLink>
-      <NavLink to="/candidate-portal-management">Portal Users</NavLink>
-    </div>
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <button
+  className="menu-toggle text-white" // Add text-white here
+  onClick={() => setOpen(true)}
+>
+        ☰
+      </button>
+
+      {/* OVERLAY */}
+      {open && (
+        <div
+          className="overlay"
+          onClick={() => setOpen(false)}
+        ></div>
+      )}
+
+      {/* SIDEBAR */}
+      <div className={`sidebar ${open ? "active" : ""}`}>
+
+        {/* CLOSE BUTTON */}
+        <button
+          className="close-btn"
+          onClick={() => setOpen(false)}
+        >
+          ✕
+        </button>
+
+        <h2 className="logo">
+  <img 
+    src={logo} 
+    alt="Arbeit Logo" 
+    style={{ width: '100%', maxWidth: '150px', display: 'block' }} 
+  />
+</h2>
+
+        <NavLink to="/dashboard">Dashboard</NavLink>
+        <NavLink to="/clients">Manage Clients</NavLink>
+        <NavLink to="/jobs">Job Requirements</NavLink>
+        <NavLink to="/candidates">Candidates</NavLink>
+        <NavLink to="/governance">Governance</NavLink>
+        <NavLink to="/candidate-portal-management">
+          Portal Users
+        </NavLink>
+
+      </div>
+    </>
   );
 }
