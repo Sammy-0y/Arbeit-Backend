@@ -11,7 +11,7 @@ export default function Sidebar() {
       <NavLink to="/jobs">Job Requirements</NavLink>
       <NavLink to="/candidates">Candidates</NavLink>
       <NavLink to="/governance">Governance</NavLink>
-      <NavLink to="/portal-users">Portal Users</NavLink>
+      <NavLink to="/candidate-portal-management">Portal Users</NavLink>
     </div>
   );
 }
