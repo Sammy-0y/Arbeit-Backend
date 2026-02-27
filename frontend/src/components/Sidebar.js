@@ -3,6 +3,7 @@ import { useState } from "react";
 import React from 'react';
 import logo from '../assets/logo.png';
 import "./sidebar.css";
+const isMobile = window.innerWidth <= 768;
 
 export default function Sidebar() {
 
@@ -18,12 +19,12 @@ export default function Sidebar() {
       </button>
 
       {/* OVERLAY */}
-      {open && (
-        <div
-          className="overlay"
-          onClick={() => setOpen(false)}
-        ></div>
-      )}
+      {open && isMobile && (
+  <div
+    className="overlay"
+    onClick={() => setOpen(false)}
+  ></div>
+)}
 
       {/* SIDEBAR */}
       <div className={`sidebar ${open ? "active" : ""}`}>
