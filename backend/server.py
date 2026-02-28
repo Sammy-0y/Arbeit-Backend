@@ -776,7 +776,7 @@ async def save_cv_file(file: UploadFile, candidate_id: str) -> str:
 
     result = cloudinary.uploader.upload(
         file.file,
-        resource_type="auto",   # required for PDFs
+        resource_type="raw",   # required for PDFs
         public_id=public_id,
         overwrite=True
     )
