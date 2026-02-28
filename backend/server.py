@@ -772,11 +772,11 @@ def verify_password(plain_password: str, hashed_password: str) -> bool:
 
 async def save_cv_file(file: UploadFile, candidate_id: str) -> str:
     """Save uploaded CV file and return URL"""
-    public_id = f"resumes/{candidate_id}.pdf"
+    public_id = f"resumes/{candidate_id}"
 
     result = cloudinary.uploader.upload(
         file.file,
-        resource_type="raw",   # required for PDFs
+        resource_type="auto",   # required for PDFs
         public_id=public_id,
         overwrite=True
     )
