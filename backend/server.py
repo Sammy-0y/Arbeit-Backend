@@ -18,6 +18,16 @@ import re
 import json
 import secrets
 from openai import AsyncOpenAI
+import cloudinary
+import cloudinary.uploader
+import os
+
+cloudinary.config(
+    cloud_name=os.getenv("CLOUDINARY_CLOUD_NAME"),
+    api_key=os.getenv("CLOUDINARY_API_KEY"),
+    api_secret=os.getenv("CLOUDINARY_API_SECRET"),
+    secure=True
+)
 
 # PDF and DOCX parsing
 import pdfplumber
@@ -759,20 +769,19 @@ def verify_password(plain_password: str, hashed_password: str) -> bool:
     return bcrypt.checkpw(plain_password.encode('utf-8'), hashed_password.encode('utf-8'))
 
 # Phase 4: File storage setup
-UPLOAD_DIR = Path("/tmp/uploads")
-UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
 
 async def save_cv_file(file: UploadFile, candidate_id: str) -> str:
     """Save uploaded CV file and return URL"""
-    file_extension = Path(file.filename).suffix
-    filename = f"{candidate_id}{file_extension}"
-    file_path = UPLOAD_DIR / filename
-    
-    with open(file_path, "wb") as f:
-        content = await file.read()
-        f.write(content)
-    
-    return f"/api/uploads/{filename}"
+    public_id = f"resumes/{candidate_id}"
+
+    result = cloudinary.uploader.upload(
+        file.file,
+        resource_type="raw",   # required for PDFs
+        public_id=public_id,
+        overwrite=True
+    )
+
+    return result["secure_url"]
 
 
 async def extract_text_from_cv(file: UploadFile) -> str:
@@ -4543,15 +4552,7 @@ async def replace_candidate_cv(
     
     # Save new CV file
     version_id = f"cv_v_{uuid.uuid4().hex[:12]}"
-    file_extension = Path(file.filename).suffix
-    filename = f"{candidate_id}_v{next_version_number}{file_extension}"
-    file_path = UPLOAD_DIR / filename
-    
-    with open(file_path, "wb") as f:
-        content = await file.read()
-        f.write(content)
-    
-    cv_url = f"/api/uploads/{filename}"
+    cv_url = await save_cv_file(file, candidate_id)
     
     # Extract text from CV using proper PDF/DOCX parsing
     cv_text = await extract_text_from_cv(file)
@@ -4823,9 +4824,6 @@ async def delete_cv_version(
         
     elif mode == "hard":
         # Hard delete: remove file and mark as hard deleted
-        file_path = UPLOAD_DIR / Path(version["file_url"]).name
-        if file_path.exists():
-            file_path.unlink()
         
         await db.candidate_cv_versions.update_one(
             {"version_id": version_id},
@@ -6826,7 +6824,6 @@ async def health_check():
 app.include_router(api_router)
 
 # Mount static files directory for serving uploaded CVs
-app.mount("/api/uploads", StaticFiles(directory=str(UPLOAD_DIR)), name="uploads")
 
 app.add_middleware(
     CORSMiddleware,
