@@ -202,7 +202,7 @@ export const CandidateDetail = () => {
 
   const openResumeInNewTab = () => {
     if (candidate?.cv_file_url) {
-      const fullUrl = candidate.cv_file_url.startsWith('http') 
+      const fullUrl = candidate.cv_file_url?.startsWith('http') 
         ? candidate.cv_file_url 
         : `${BACKEND_URL}${candidate.cv_file_url}`;
       window.open(fullUrl, '_blank');
@@ -211,7 +211,7 @@ export const CandidateDetail = () => {
 
   const downloadResume = () => {
     if (candidate?.cv_file_url) {
-      const fullUrl = candidate.cv_file_url.startsWith('http') 
+      const fullUrl = candidate.cv_file_url?.startsWith('http') 
         ? candidate.cv_file_url 
         : `${BACKEND_URL}${candidate.cv_file_url}`;
       
@@ -241,7 +241,8 @@ export const CandidateDetail = () => {
   }
 
   const canEdit = ['admin', 'recruiter'].includes(user?.role);
-  const isPdf = candidate.cv_file_url?.includes('/raw/upload/');
+  const fileExtension = getFileExtension(candidate?.cv_file_url);
+  const isPdf = candidate?.cv_file_url?.includes('/raw/upload/');
   const isImage = ['jpg', 'jpeg', 'png', 'gif', 'webp'].includes(fileExtension);
 
   return (
@@ -477,14 +478,18 @@ export const CandidateDetail = () => {
                 <div className="border rounded-lg overflow-hidden bg-gray-50">
                   {isPdf ? (
                     <iframe
-                      src={`${candidate.cv_file_url.startsWith('http') ? candidate.cv_file_url : BACKEND_URL + candidate.cv_file_url}#toolbar=1`}
+                      src={
+  candidate.cv_file_url?.startsWith('http')
+    ? candidate.cv_file_url
+    : BACKEND_URL + candidate.cv_file_url
+}
                       className="w-full h-[600px]"
                       title="Resume PDF"
                       data-testid="resume-iframe"
                     />
                   ) : isImage ? (
                     <img
-                      src={candidate.cv_file_url.startsWith('http') ? candidate.cv_file_url : BACKEND_URL + candidate.cv_file_url}
+                      src={candidate.cv_file_url?.startsWith('http') ? candidate.cv_file_url : BACKEND_URL + candidate.cv_file_url}
                       alt="Resume"
                       className="max-w-full h-auto mx-auto"
                       data-testid="resume-image"
