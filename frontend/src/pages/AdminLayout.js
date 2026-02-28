@@ -32,7 +32,7 @@ export default function AdminLayout() {
         </button>
       </div>
 
-      <Sidebar />
+      <Sidebar closeSidebar={() => setIsOpen(false)} />
     </div>
 
     {/* OVERLAY */}

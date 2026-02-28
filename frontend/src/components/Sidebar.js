@@ -3,7 +3,7 @@ import logo from "../assets/logo.png";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 
-export default function Sidebar() {
+export default function Sidebar({ closeSidebar }) {
   const navigate = useNavigate();
 const { logout } = useAuth();
 
@@ -24,7 +24,7 @@ const handleLogout = () => {
     {/* MENU */}
     <div className="flex-1">
       <nav className="flex flex-col space-y-4 text-gray-700 font-medium">
-        <NavLink to="/dashboard" className={({ isActive }) =>
+        <NavLink to="/dashboard" onClick={closeSidebar} className={({ isActive }) =>
           `px-3 py-2 rounded-md ${
             isActive ? "bg-blue-100 text-blue-700 font-semibold" : "hover:bg-gray-100"
           }`
@@ -32,7 +32,7 @@ const handleLogout = () => {
           Dashboard
         </NavLink>
 
-        <NavLink to="/clients" className={({ isActive }) =>
+        <NavLink to="/clients" onClick={closeSidebar} className={({ isActive }) =>
           `px-3 py-2 rounded-md ${
             isActive ? "bg-blue-100 text-blue-700 font-semibold" : "hover:bg-gray-100"
           }`
@@ -40,7 +40,7 @@ const handleLogout = () => {
           Clients
         </NavLink>
 
-        <NavLink to="/jobs" className={({ isActive }) =>
+        <NavLink to="/jobs" onClick={closeSidebar} className={({ isActive }) =>
           `px-3 py-2 rounded-md ${
             isActive ? "bg-blue-100 text-blue-700 font-semibold" : "hover:bg-gray-100"
           }`
@@ -48,7 +48,7 @@ const handleLogout = () => {
           Job Requirements
         </NavLink>
 
-        <NavLink to="/candidates" className={({ isActive }) =>
+        <NavLink to="/candidates" onClick={closeSidebar} className={({ isActive }) =>
           `px-3 py-2 rounded-md ${
             isActive ? "bg-blue-100 text-blue-700 font-semibold" : "hover:bg-gray-100"
           }`
@@ -56,7 +56,7 @@ const handleLogout = () => {
           Candidates
         </NavLink>
 
-        <NavLink to="/governance" className={({ isActive }) =>
+        <NavLink to="/governance" onClick={closeSidebar} className={({ isActive }) =>
           `px-3 py-2 rounded-md ${
             isActive ? "bg-blue-100 text-blue-700 font-semibold" : "hover:bg-gray-100"
           }`
@@ -64,7 +64,7 @@ const handleLogout = () => {
           Governance
         </NavLink>
 
-        <NavLink to="/candidate-portal-management" className={({ isActive }) =>
+        <NavLink to="/candidate-portal-management" onClick={closeSidebar} className={({ isActive }) =>
           `px-3 py-2 rounded-md ${
             isActive ? "bg-blue-100 text-blue-700 font-semibold" : "hover:bg-gray-100"
           }`
