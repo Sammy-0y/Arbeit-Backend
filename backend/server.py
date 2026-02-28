@@ -772,13 +772,12 @@ def verify_password(plain_password: str, hashed_password: str) -> bool:
 
 async def save_cv_file(file: UploadFile, candidate_id: str) -> str:
     """Save uploaded CV file and return URL"""
-    public_id = f"resumes/{candidate_id}"
+    public_id = f"resumes/{candidate_id}.pdf"
 
     result = cloudinary.uploader.upload(
         file.file,
         resource_type="raw",   # required for PDFs
         public_id=public_id,
-        format="pdf",
         overwrite=True
     )
 
@@ -4825,6 +4824,7 @@ async def delete_cv_version(
         
     elif mode == "hard":
         # Hard delete: remove file and mark as hard deleted
+
         
         await db.candidate_cv_versions.update_one(
             {"version_id": version_id},
