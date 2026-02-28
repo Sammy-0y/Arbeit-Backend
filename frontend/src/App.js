@@ -97,68 +97,124 @@ function App() {
 <Route element={<AdminLayout />}>
   
   <Route
-    path="/dashboard"
-    element={
-      <ProtectedRoute>
-        <DashboardRouter />
-      </ProtectedRoute>
-    }
-  />
-
-  <Route
-    path="/clients"
-    element={
-      <ProtectedRoute>
-        <ClientsList />
-      </ProtectedRoute>
-    }
-  />
-
-  <Route
-    path="/jobs"
-    element={
-      <ProtectedRoute>
-        <JobsList />
-      </ProtectedRoute>
-    }
-  />
-
-  <Route
-    path="/candidates"
-    element={
-      <ProtectedRoute>
-        <AllCandidates />
-      </ProtectedRoute>
-    }
-  />
-  <Route
-  path="/candidate-portal-management"
-  element={
-    <ProtectedRoute>
-      <CandidatePortalManagement />
-    </ProtectedRoute>
-  }
-/>
-
-  <Route
-    path="/interviews"
-    element={
-      <ProtectedRoute>
-        <InterviewsListPage />
-      </ProtectedRoute>
-    }
-  />
-
-  <Route
-    path="/governance"
-    element={
-      <ProtectedRoute allowedRoles={['admin']}>
-        <GovernanceLayout />
-      </ProtectedRoute>
-    }
-  />
-
-</Route>
+              path="/dashboard"
+              element={
+                <ProtectedRoute>
+                  <DashboardRouter />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/clients"
+              element={
+                <ProtectedRoute allowedRoles={['admin', 'recruiter']}>
+                  <ClientsList />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/clients/:clientId"
+              element={
+                <ProtectedRoute allowedRoles={['admin', 'recruiter']}>
+                  <ClientDetail />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/jobs"
+              element={
+                <ProtectedRoute>
+                  <JobsList />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/jobs/create"
+              element={
+                <ProtectedRoute>
+                  <JobForm />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/jobs/:jobId"
+              element={
+                <ProtectedRoute>
+                  <JobDetail />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/jobs/:jobId/edit"
+              element={
+                <ProtectedRoute>
+                  <JobForm />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/candidates"
+              element={
+                <ProtectedRoute>
+                  <AllCandidates />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/interviews"
+              element={
+                <ProtectedRoute>
+                  <InterviewsListPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/candidate-portal-management"
+              element={
+                <ProtectedRoute allowedRoles={['admin', 'recruiter']}>
+                  <CandidatePortalManagement />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/jobs/:jobId/candidates"
+              element={
+                <ProtectedRoute>
+                  <CandidatesList />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/candidates/:candidateId"
+              element={
+                <ProtectedRoute>
+                  <CandidateDetail />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/candidates/:candidateId/story"
+              element={
+                <ProtectedRoute>
+                  <CandidateStoryView />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/governance"
+              element={
+                <ProtectedRoute allowedRoles={['admin']}>
+                  <GovernanceLayout />
+                </ProtectedRoute>
+              }
+            >
+              <Route path="roles" element={<RolesPermissions />} />
+              <Route path="assignments" element={<RoleAssignments />} />
+              <Route path="matrix" element={<AccessMatrix />} />
+              <Route path="audit" element={<AuditLogs />} />
+              <Route index element={<Navigate to="roles" replace />} />
+            </Route>
+            </Route>
           
             <Route path="/" element={<Navigate to="/dashboard" replace />} />
 </Routes>
