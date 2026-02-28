@@ -242,7 +242,7 @@ export const CandidateDetail = () => {
 
   const canEdit = ['admin', 'recruiter'].includes(user?.role);
   const fileExtension = getFileExtension(candidate?.cv_file_url);
-  const isPdf = candidate?.cv_file_url?.includes('/raw/upload/');
+  const isPdf = fileExtension === 'pdf';
   const isImage = ['jpg', 'jpeg', 'png', 'gif', 'webp'].includes(fileExtension);
 
   return (
