@@ -100,7 +100,7 @@ export const AllCandidates = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       {/* Header */}
-      <header className="bg-gradient-to-r from-blue-900 to-blue-800 text-white p-4 shadow-lg">
+      <header className="sticky top-0 z-30 bg-gradient-to-r from-blue-900 to-blue-800 text-white p-4 shadow-lg">
         <div className="w-full flex justify-between items-center px-8">
           <div className="flex items-center gap-4">
             
