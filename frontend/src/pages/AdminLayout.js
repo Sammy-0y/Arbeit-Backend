@@ -5,7 +5,7 @@ import Sidebar from "../components/Sidebar";
 export default function AdminLayout() {
   const [isOpen, setIsOpen] = useState(false);
   return (
-  <div className="relative flex h-screen bg-gray-100">
+  <div className="relative flex h-screen bg-blue-900">
 
     {/* MOBILE HAMBURGER */}
     {!isOpen && (
