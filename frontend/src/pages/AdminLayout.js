@@ -5,7 +5,7 @@ import Sidebar from "../components/Sidebar";
 export default function AdminLayout() {
   const [isOpen, setIsOpen] = useState(false);
   return (
-  <div className="relative flex h-screen bg-blue-900">
+  <div className="relative flex h-screen bg-gray-100">
 
     {/* MOBILE HAMBURGER */}
     {!isOpen && (
@@ -21,11 +21,11 @@ export default function AdminLayout() {
     {/* SIDEBAR */}
 <div
   className={`
-fixed top-4 bottom-4 left-0 md:left-0 min-h-screen w-56 bg-slate-900 text-slate-200 z-40
-rounded-r-2xl shadow-2xl border-r-0
+fixed top-0 left-2 h-full w-56 bg-slate-900 text-slate-200 z-40
+rounded-r-2xl shadow-2xl
 transform transition-transform duration-300
 ${isOpen ? "translate-x-0" : "-translate-x-full"}
-md:translate-x-0 md:fixed
+md:translate-x-0 md:static
 `}
 >
       {/* Close Button (Mobile Only) */}
