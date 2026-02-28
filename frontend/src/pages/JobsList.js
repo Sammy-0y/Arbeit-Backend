@@ -92,10 +92,19 @@ export const JobsList = () => {
   return (
     
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-teal-50">
-      <div className="container mx-auto p-8">
-        <h1 className="sticky top-0 z-20 bg-white text-2xl font-bold text-blue-900 py-4 mb-6">
-  Job Requirements
-</h1>
+      <header className="sticky top-0 z-30 bg-gradient-to-r from-blue-900 to-blue-800 text-white p-4 shadow-lg">
+  <div className="w-full flex justify-between items-center px-8">
+
+    <div className="flex items-center gap-4">
+      <Briefcase className="h-5 w-5" />
+      <h1 className="text-xl font-bold">
+        Job Requirements
+      </h1>
+    </div>
+
+  </div>
+</header>
+      <div className="container mx-auto p-8">        
         <Card className="shadow-xl">
           <CardHeader className="bg-gradient-to-r from-blue-900 to-blue-800 text-white">
             <div className="flex justify-between items-center">
