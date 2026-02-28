@@ -20,12 +20,7 @@ export default function AdminLayout() {
     {/* SIDEBAR */}
     {/* SIDEBAR */}
 <div
-  className={`
-    fixed top-0 left-0 h-full w-64 bg-white z-40
-    transform transition-transform duration-300
-    ${isOpen ? "translate-x-0" : "-translate-x-full"}
-    md:translate-x-0 md:static
-  `}
+  className="w-56 bg-white h-full"
 >
       {/* Close Button (Mobile Only) */}
       <div className="md:hidden flex justify-end p-4 bg-white">
@@ -46,7 +41,7 @@ export default function AdminLayout() {
     )}
 
     {/* RIGHT SIDE CONTENT */}
-    <div className="flex-1 flex flex-col overflow-y-auto md:ml-56">
+    <div className="flex-1 flex flex-col overflow-y-auto">
       <div className="flex-1 w-full">
         <Outlet />
       </div>
