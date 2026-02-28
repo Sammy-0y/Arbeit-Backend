@@ -12,7 +12,7 @@ const handleLogout = () => {
   navigate("/login");
 };
   return (
-  <div className="w-56 bg-slate-900 text-slate-200 h-full p-6 flex flex-col rounded-r-2xl">
+  <div className="w-56 bg-slate-900 text-slate-200 h-full p-6 flex flex-col rounded-r-2xl shadow-2xl">
     {/* LOGO */}
     <div className="flex justify-center mb-8 bg-slate-800 rounded-lg p-3">
   <img
