@@ -8,12 +8,14 @@ export default function AdminLayout() {
   <div className="relative flex h-screen bg-gray-100">
 
     {/* MOBILE HAMBURGER */}
-    <button
-      className="md:hidden fixed top-4 left-4 z-50"
-      onClick={() => setIsOpen(true)}
-    >
-      <Menu size={28} />
-    </button>
+    {!isOpen && (
+  <button
+    className="md:hidden fixed top-4 left-4 z-50"
+    onClick={() => setIsOpen(true)}
+  >
+    <Menu size={28} className="text-white" />
+  </button>
+)}
 
     {/* SIDEBAR */}
     {/* SIDEBAR */}
