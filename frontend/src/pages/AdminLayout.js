@@ -21,7 +21,7 @@ export default function AdminLayout() {
     {/* SIDEBAR */}
 <div
   className={`
-  fixed top-0 left-0 h-full w-56 bg-white z-40
+  fixed top-0 left-0 h-full w-56 bg-slate-900 text-slate-200 z-40
   transform transition-transform duration-300
   ${isOpen ? "translate-x-0" : "-translate-x-full"}
   md:translate-x-0 md:static
