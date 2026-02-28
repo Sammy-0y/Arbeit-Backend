@@ -478,11 +478,13 @@ export const CandidateDetail = () => {
                 <div className="border rounded-lg overflow-hidden bg-gray-50">
                   {isPdf ? (
                     <iframe
-                      src={
-  candidate.cv_file_url?.startsWith('http')
-    ? candidate.cv_file_url
-    : BACKEND_URL + candidate.cv_file_url
-}
+                      src={`https://docs.google.com/gview?url=${
+  encodeURIComponent(
+    candidate.cv_file_url?.startsWith('http')
+      ? candidate.cv_file_url
+      : BACKEND_URL + candidate.cv_file_url
+  )
+}&embedded=true`}
                       className="w-full h-[600px]"
                       title="Resume PDF"
                       data-testid="resume-iframe"
