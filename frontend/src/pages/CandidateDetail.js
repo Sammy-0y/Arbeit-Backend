@@ -242,7 +242,7 @@ export const CandidateDetail = () => {
 
   const canEdit = ['admin', 'recruiter'].includes(user?.role);
   const fileExtension = getFileExtension(candidate?.cv_file_url);
-  const isPdf = fileExtension === 'pdf';
+  const isPdf = candidate?.cv_file_url?.includes('/raw/upload/');
   const isImage = ['jpg', 'jpeg', 'png', 'gif', 'webp'].includes(fileExtension);
 
   return (
@@ -477,18 +477,16 @@ export const CandidateDetail = () => {
               {candidate.cv_file_url ? (
                 <div className="border rounded-lg overflow-hidden bg-gray-50">
                   {isPdf ? (
-                    <iframe
-                      src={`https://docs.google.com/gview?url=${
-  encodeURIComponent(
-    candidate.cv_file_url?.startsWith('http')
+                  <iframe
+  src={`https://docs.google.com/gview?url=${encodeURIComponent(
+    candidate.cv_file_url?.startsWith("http")
       ? candidate.cv_file_url
-      : BACKEND_URL + candidate.cv_file_url
-  )
-}&embedded=true`}
-                      className="w-full h-[600px]"
-                      title="Resume PDF"
-                      data-testid="resume-iframe"
-                    />
+      : `${BACKEND_URL}${candidate.cv_file_url}`
+  )}&embedded=true`}
+  className="w-full h-[600px]"
+  title="Resume PDF"
+  data-testid="resume-iframe"
+/>
                   ) : isImage ? (
                     <img
                       src={candidate.cv_file_url?.startsWith('http') ? candidate.cv_file_url : BACKEND_URL + candidate.cv_file_url}
