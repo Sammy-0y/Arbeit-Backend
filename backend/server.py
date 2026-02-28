@@ -778,6 +778,7 @@ async def save_cv_file(file: UploadFile, candidate_id: str) -> str:
         file.file,
         resource_type="raw",   # required for PDFs
         public_id=public_id,
+        format="pdf",
         overwrite=True
     )
 
