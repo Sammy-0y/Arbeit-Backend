@@ -89,6 +89,14 @@ export const ClientsList = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-teal-50">
+      {/* Top Sticky Header */}
+<header className="sticky top-0 z-30 bg-gradient-to-r from-blue-900 to-blue-800 text-white p-4 shadow-lg">
+  <div className="w-full flex items-center px-8">
+    <h1 className="text-xl font-bold">
+      Client Companies
+    </h1>
+  </div>
+</header>
       <div className="container mx-auto p-8">
         <Card className="shadow-xl mb-6">
           <CardHeader className="bg-gradient-to-r from-blue-900 to-blue-800 text-white">
