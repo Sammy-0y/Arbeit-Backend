@@ -5,7 +5,10 @@ import Sidebar from "../components/Sidebar";
 export default function AdminLayout() {
   const [isOpen, setIsOpen] = useState(false);
   return (
-  <div className="relative flex h-screen bg-gray-100">
+  <div
+  className="relative flex min-h-screen bg-cover bg-center bg-no-repeat"
+  style={{ backgroundImage: "url('/bg-image.png')" }}
+>
 
     {/* MOBILE HAMBURGER */}
     {!isOpen && (
@@ -47,10 +50,7 @@ md:translate-x-0 md:static
     )}
 
     {/* RIGHT SIDE CONTENT */}
-    <div
-  className="flex-1 flex flex-col overflow-y-auto bg-cover bg-center bg-no-repeat bg-fixed relative"
-  style={{ backgroundImage: "url('/bg-image.png')" }}
->
+    <div className="flex-1 flex flex-col overflow-y-auto relative">
   {/* Optional light overlay for readability */}
   <div className="absolute inset-0 bg-white/70"></div>
 
