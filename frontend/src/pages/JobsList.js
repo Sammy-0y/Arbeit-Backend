@@ -91,7 +91,17 @@ export const JobsList = () => {
 
   return (
     
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-teal-50">
+    <div
+  className="relative min-h-screen bg-gradient-to-br from-blue-50 to-teal-50"
+>
+  <div
+    className="absolute top-0 right-0 h-full w-2/5 bg-no-repeat bg-right pointer-events-none"
+    style={{
+      backgroundImage: "url('/bg-image.png')",
+      backgroundSize: "contain",
+      opacity: 0.07
+    }}
+  ></div>
       <header className="sticky top-0 z-30 bg-gradient-to-r from-blue-900 to-blue-800 text-white p-4 shadow-lg">
   <div className="w-full flex justify-between items-center px-8">
 
