@@ -10,7 +10,7 @@ export default function AdminLayout() {
   className="fixed inset-0 -z-10 bg-cover bg-center bg-no-repeat"
   style={{ backgroundImage: "url('/bg-image.png')" }}
 >
-  <div className="absolute inset-0 backdrop-blur-lg bg-white/60"></div>
+  <div className="absolute inset-0 backdrop-blur-lg bg-white/30"></div>
 </div>
 
     {/* MOBILE HAMBURGER */}
