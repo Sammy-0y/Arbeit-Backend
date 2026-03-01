@@ -5,7 +5,7 @@ import Sidebar from "../components/Sidebar";
 export default function AdminLayout() {
   const [isOpen, setIsOpen] = useState(false);
   return (
-  <div className="relative flex h-screen">
+  <div className="relative flex min-h-screen w-full">
     <div
   className="fixed inset-0 -z-10 bg-cover bg-center bg-no-repeat"
   style={{ backgroundImage: "url('/bg-image.png')" }}
