@@ -52,7 +52,7 @@ md:translate-x-0 md:static
     {/* RIGHT SIDE CONTENT */}
     <div className="flex-1 flex flex-col overflow-y-auto relative">
   {/* Optional light overlay for readability */}
-  <div className="absolute inset-0 bg-white/70"></div>
+  <div className="absolute inset-0 backdrop-blur-sm bg-white/60"></div>
 
   <div className="relative z-10 flex-1 w-full">
     <Outlet />
