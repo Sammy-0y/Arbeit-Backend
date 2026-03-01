@@ -205,7 +205,7 @@ export const CandidatePortalManagement = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+    <div className="min-h-screen">
       {/* Header */}
       <header className="bg-gradient-to-r from-purple-900 to-indigo-800 text-white p-4 shadow-lg">
         <div className="container mx-auto flex justify-between items-center max-w-7xl">

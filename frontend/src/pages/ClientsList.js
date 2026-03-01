@@ -88,14 +88,14 @@ export const ClientsList = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-teal-50">
+    <div className="min-h-screen">
       {/* Top Sticky Header */}
 <header className="sticky top-0 z-30 bg-gradient-to-r from-blue-900 to-blue-800 text-white p-4 shadow-lg">
   <div className="w-full flex items-center px-8">
   <div className="flex items-center gap-3">
     <Building2 className="h-5 w-5" />
     <h1 className="text-xl font-bold">
-      List of all Client Companies
+    All Client Companies
     </h1>
   </div>
 </div>
