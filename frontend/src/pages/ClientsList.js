@@ -100,7 +100,7 @@ export const ClientsList = () => {
   </div>
 </div>
 </header>
-      <div className="container mx-auto p-8">
+      <div className="w-full px-4 md:px-8 py-6">
         <Card className="shadow-xl mb-6">
           <CardHeader className="bg-gradient-to-r from-blue-900 to-blue-800 text-white">
             <div className="flex justify-between items-center">
