@@ -53,7 +53,7 @@ md:translate-x-0 md:static
     )}
 
     {/* RIGHT SIDE CONTENT */}
-    <div className="flex-1 flex flex-col overflow-y-auto bg-white/35">
+    <div className="flex-1 flex flex-col bg-white/35">
   <div className="relative z-10 flex-1 w-full">
     <Outlet />
   </div>
