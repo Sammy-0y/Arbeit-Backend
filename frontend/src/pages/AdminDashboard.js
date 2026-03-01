@@ -65,7 +65,7 @@ export const AdminDashboard = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-teal-50">
+    <div className="min-h-screen">
 
   {/* Top Sticky Header */}
   <header className="sticky top-0 z-30 bg-gradient-to-r from-blue-900 to-blue-800 text-white p-4 shadow-lg">
