@@ -10,7 +10,7 @@ export default function AdminLayout() {
   className="fixed inset-0 -z-10 bg-cover bg-center bg-no-repeat"
   style={{ backgroundImage: "url('/bg-image.png')" }}
 >
-  <div className="absolute inset-0 backdrop-blur-lg bg-white/30"></div>
+  <div className="absolute inset-0 backdrop-blur-lg bg-white/25"></div>
 </div>
 
     {/* MOBILE HAMBURGER */}
@@ -53,7 +53,7 @@ md:translate-x-0 md:static
     )}
 
     {/* RIGHT SIDE CONTENT */}
-    <div className="flex-1 flex flex-col overflow-y-auto bg-white/80">
+    <div className="flex-1 flex flex-col overflow-y-auto bg-white/35">
   <div className="relative z-10 flex-1 w-full">
     <Outlet />
   </div>
