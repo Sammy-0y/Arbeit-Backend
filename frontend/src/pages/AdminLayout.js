@@ -48,7 +48,7 @@ md:translate-x-0 md:static
 
     {/* RIGHT SIDE CONTENT */}
     <div
-  className="flex-1 flex flex-col overflow-y-auto bg-cover bg-center bg-no-repeat relative"
+  className="flex-1 flex flex-col overflow-y-auto bg-cover bg-center bg-no-repeat bg-fixed relative"
   style={{ backgroundImage: "url('/bg-image.png')" }}
 >
   {/* Optional light overlay for readability */}
