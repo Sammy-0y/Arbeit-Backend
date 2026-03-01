@@ -6,7 +6,7 @@ export default function AdminLayout() {
   const [isOpen, setIsOpen] = useState(false);
   return (
   <div
-  className="relative flex min-h-screen bg-cover bg-center bg-no-repeat"
+  className="relative flex h-screen bg-cover bg-center bg-no-repeat"
   style={{ backgroundImage: "url('/bg-image.png')" }}
 >
 
