@@ -1,62 +1,82 @@
 import { Outlet } from "react-router-dom";
-import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { useState } from "react";
+import { Menu, X, LayoutDashboard } from "lucide-react";
 import Sidebar from "../components/Sidebar";
+import { NotificationBell } from "../components/notifications";
 export default function AdminLayout() {
   const [isOpen, setIsOpen] = useState(false);
   return (
-  <div className="relative flex min-h-screen w-full">
-    <div
-  className="fixed inset-0 -z-10 bg-cover bg-center bg-no-repeat"
-  style={{ backgroundImage: "url('/bg-image.png')" }}
->
-  <div className="absolute inset-0 backdrop-blur-sm bg-white/20"></div>
-</div>
+  <div className="flex min-h-screen bg-[#eef4ff]">
 
-    {/* MOBILE HAMBURGER */}
-    {!isOpen && (
-  <button
-    className="md:hidden fixed top-4 left-4 z-50"
-    onClick={() => setIsOpen(true)}
-  >
-    <Menu size={28} className="text-white" />
-  </button>
-)}
-
-    {/* SIDEBAR */}
-    {/* SIDEBAR */}
-<div
-  className={`
-fixed top-0 left-0 min-h-screen w-56 bg-slate-900 text-slate-200 z-40
-shadow-2xl overflow-hidden
-transform transition-transform duration-300
-${isOpen ? "translate-x-0" : "-translate-x-full"}
-md:translate-x-0 md:static
-`}
->
-      {/* Close Button (Mobile Only) */}
-      <div className="md:hidden absolute top-4 right-4 z-50">
-        <button onClick={() => setIsOpen(false)}>
-          <X size={24} />
-        </button>
-      </div>
-
-      <Sidebar closeSidebar={() => setIsOpen(false)} />
+    {/* Desktop Sidebar */}
+    <div className="hidden md:flex md:w-64 md:fixed md:inset-y-0 md:left-0">
+      <Sidebar />
     </div>
 
-    {/* OVERLAY */}
+    {/* Mobile Sidebar Overlay */}
     {isOpen && (
-      <div
-        className="fixed inset-0 bg-black bg-opacity-40 md:hidden z-30"
-        onClick={() => setIsOpen(false)}
-      />
+      <div className="fixed inset-0 z-50 md:hidden">
+        <div
+          className="absolute inset-0 bg-black/30"
+          onClick={() => setIsOpen(false)}
+        />
+        <div className="absolute top-0 left-0 w-[260px] h-full">
+          <Sidebar closeSidebar={() => setIsOpen(false)} />
+        </div>
+      </div>
     )}
+    {/* Main Content */}
+<div className="flex-1 md:ml-64 flex flex-col">
+  {/* Mobile Header */}
+  {/* Mobile Header */}
+<div className="fixed top-0 left-0 right-0 md:left-56 z-40">
+  <div className="
+  bg-[#243b8f]
+  text-white
+  rounded-b-[24px]
+  px-6 md:px-8
+  py-4
+  shadow-md
+  flex items-center justify-between
+">
 
-    {/* RIGHT SIDE CONTENT */}
-    <div className="flex-1 flex flex-col bg-white/35">
-  <div className="relative z-10 flex-1 w-full">
+    {/* Left Side */}
+    <div className="flex items-center gap-3">
+
+      <button
+        onClick={() => setIsOpen(true)}
+        className="md:hidden p-2 rounded-lg hover:bg-white/10"
+      >
+        <Menu size={22} />
+      </button>
+
+      <LayoutDashboard className="h-5 w-5 text-blue-200" />
+
+      <span className="font-semibold">
+        Admin Dashboard
+      </span>
+
+    </div>
+
+    {/* Right Side */}
+    <div className="flex items-center gap-4">
+
+      <NotificationBell />
+
+      <span className="text-sm text-blue-200">
+        Welcome back
+      </span>
+
+    </div>
+
+  </div>
+
+</div>
+  {/* Page Content */}
+  <div className="px-4 py-6 pt-24 md:pt-28 md:p-6">
     <Outlet />
   </div>
+
 </div>
 
   </div>
