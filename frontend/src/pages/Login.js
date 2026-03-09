@@ -168,6 +168,56 @@ console.log("LOGIN RESULT:", result);
     alt="Login Illustration"
     className="absolute inset-0 w-full h-full object-cover"
    />
+   {/* Password Change Dialog */}
+<Dialog open={showPasswordChange}>
+  <DialogContent className="sm:max-w-md" hideCloseButton>
+    
+    <DialogHeader>
+      <DialogTitle className="flex items-center gap-2">
+        <Lock className="h-5 w-5 text-amber-600" />
+        Password Change Required
+      </DialogTitle>
+      <DialogDescription>
+        For security reasons, you must change your password before continuing.
+      </DialogDescription>
+    </DialogHeader>
+
+    <div className="space-y-4 py-4">
+
+      <div>
+        <Label>New Password</Label>
+        <Input
+          type="password"
+          value={newPassword}
+          onChange={(e) => setNewPassword(e.target.value)}
+          placeholder="Enter new password"
+        />
+      </div>
+
+      <div>
+        <Label>Confirm Password</Label>
+        <Input
+          type="password"
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+          placeholder="Confirm password"
+        />
+      </div>
+
+    </div>
+
+    <DialogFooter>
+      <Button
+        onClick={handlePasswordChange}
+        disabled={changingPassword}
+        className="w-full"
+      >
+        {changingPassword ? "Changing Password..." : "Change Password & Continue"}
+      </Button>
+    </DialogFooter>
+
+  </DialogContent>
+</Dialog>
    </div>
 
   </div>
