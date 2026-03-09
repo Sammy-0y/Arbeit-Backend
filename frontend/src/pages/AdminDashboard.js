@@ -5,19 +5,22 @@ import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card'
 import { Badge } from '../components/ui/badge';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { LayoutDashboard } from "lucide-react";
-import { 
-  Users, 
-  Briefcase, 
-  FileText, 
-  Settings, 
+import {
+  LayoutDashboard,
+  Menu,
+  Users,
+  Briefcase,
+  FileText,
+  Settings,
   Calendar,
   Clock,
   CheckCircle,
   XCircle,
+  ArrowLeft,
+  ArrowRight,
   TrendingUp,
   UserCog
-} from 'lucide-react';
+} from "lucide-react";
 import { NotificationBell } from '../components/notifications';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
@@ -66,80 +69,141 @@ export const AdminDashboard = () => {
 
   return (
     <div className="min-h-screen">
-
-  {/* Top Sticky Header */}
-  <header className="sticky top-0 z-30 bg-gradient-to-r from-blue-900 to-blue-800 text-white p-4 shadow-lg">
-    <div className="w-full flex items-center px-8">
-      <div className="flex items-center gap-3">
-        <LayoutDashboard className="h-5 w-5" />
-        <h1 className="text-xl font-bold">
-          Arbeit Admin Portal
-        </h1>
-      </div>
+  <div className="container mx-auto px-4 py-6 md:p-8">
+        {/* Welcome Card */}
+<Card className="shadow-lg mb-6 rounded-2xl">
+  <CardContent className="p-8">
+    <div className="border-l-4 border-teal-500 pl-4">
+      <h2 className="text-2xl font-semibold text-blue-900 mb-2">
+        Welcome, {user?.name}!
+      </h2>
+      <p className="text-gray-600 text-lg">
+        Full system access enabled. Manage clients, jobs, candidates, and interviews.
+      </p>
     </div>
-  </header>
+  </CardContent>
+</Card>
 
-  <div className="container mx-auto p-8">
-        <Card className="shadow-xl mb-8" data-testid="admin-dashboard-card">
-          <CardHeader className="bg-gradient-to-r from-blue-900 to-blue-800 text-white">
-            <CardTitle className="text-3xl" data-testid="admin-dashboard-title">
-              Admin Dashboard
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="p-8">
-            <div className="space-y-6">
-              <div className="border-l-4 border-teal-500 pl-4" data-testid="admin-welcome">
-                <h2 className="text-2xl font-semibold text-blue-900 mb-2">
-                  Welcome, {user?.name}!
-                </h2>
-                <p className="text-gray-600 text-lg">
-                  Full system access enabled. Manage clients, jobs, candidates, and interviews.
-                </p>
-              </div>
+{/* Stats Section */}
+{/* Stats Section */}
+{/* Stats Section */}
+{/* Stats Section */}
+{/* Stats Section */}
+<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mt-6 px-3 sm:px-0">
 
-              {/* Quick Stats - Clickable */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
-                <div 
-                  className="bg-blue-50 rounded-lg p-4 text-center cursor-pointer hover:bg-blue-100 hover:shadow-md transition-all"
-                  onClick={() => navigate('/clients')}
-                  data-testid="stats-clients"
-                >
-                  <Users className="h-8 w-8 mx-auto mb-2 text-blue-600" />
-                  <p className="text-2xl font-bold text-blue-900">{stats.clients}</p>
-                  <p className="text-sm text-gray-600">Clients</p>
-                </div>
-                <div 
-                  className="bg-teal-50 rounded-lg p-4 text-center cursor-pointer hover:bg-teal-100 hover:shadow-md transition-all"
-                  onClick={() => navigate('/jobs')}
-                  data-testid="stats-jobs"
-                >
-                  <Briefcase className="h-8 w-8 mx-auto mb-2 text-teal-600" />
-                  <p className="text-2xl font-bold text-teal-900">{stats.jobs}</p>
-                  <p className="text-sm text-gray-600">Active Jobs</p>
-                </div>
-                <div 
-                  className="bg-purple-50 rounded-lg p-4 text-center cursor-pointer hover:bg-purple-100 hover:shadow-md transition-all"
-                  onClick={() => navigate('/candidates')}
-                  data-testid="stats-candidates"
-                >
-                  <FileText className="h-8 w-8 mx-auto mb-2 text-purple-600" />
-                  <p className="text-2xl font-bold text-purple-900">{stats.candidates}</p>
-                  <p className="text-sm text-gray-600">Candidates</p>
-                </div>
-                <div 
-                  className="bg-amber-50 rounded-lg p-4 text-center cursor-pointer hover:bg-amber-100 hover:shadow-md transition-all"
-                  onClick={() => navigate('/interviews')}
-                  data-testid="stats-interviews"
-                >
-                  <Calendar className="h-8 w-8 mx-auto mb-2 text-amber-600" />
-                  <p className="text-2xl font-bold text-amber-900">{stats.interviews?.total_interviews || 0}</p>
-                  <p className="text-sm text-gray-600">Interviews</p>
-                </div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
+  {/* Clients */}
+  <Card
+  onClick={() => navigate("/clients")}
+  className="p-3 sm:p-4 rounded-2xl bg-blue-100 border-l-4 border-blue-500 shadow-sm hover:shadow-md transition-all cursor-pointer hover:scale-[1.02]"
+>
 
+  <div className="flex justify-between items-start">
+    <div>
+      <h3 className="text-base font-semibold text-gray-800">
+        Clients
+      </h3>
+      <p className="text-xs text-gray-500 mt-1">
+        Total registered clients
+      </p>
+    </div>
+    <Users className="h-5 w-5 text-blue-600" />
+  </div>
+
+  <div className="mt-2 text-2xl sm:text-3xl font-bold text-gray-900">
+    {stats.clients}
+  </div>
+
+  <div className="mt-3 flex justify-end items-center text-xs text-blue-600">
+    <span className="mr-1">View details</span>
+    <ArrowRight className="h-4 w-4" />
+  </div>
+
+</Card>
+
+  {/* Active Jobs */}
+  <Card
+    onClick={() => navigate("/jobs")}
+    className="p-3 sm:p-4 rounded-2xl bg-green-50 border-l-4 border-green-500 shadow-sm hover:shadow-md transition-all cursor-pointer hover:scale-[1.02]"
+  >
+    <div className="flex justify-between items-start">
+      <div>
+        <h3 className="text-base font-semibold text-gray-800">
+          Active Jobs
+        </h3>
+        <p className="text-sm text-gray-500 mt-1">
+          Currently open positions
+        </p>
+      </div>
+      <Briefcase className="h-6 w-6 text-emerald-600" />
+    </div>
+
+    <div className="mt-2 text-2xl sm:text-3xl font-bold text-gray-900">
+      {stats.jobs}
+    </div>
+
+   <div className="mt-3 flex justify-end items-center text-xs text-emerald-600">
+      <span className="mr-1">View details</span>
+      <ArrowRight className="h-4 w-4" />
+    </div>
+  </Card>
+
+
+  {/* Candidates */}
+  <Card
+    onClick={() => navigate("/candidates")}
+    className="p-3 sm:p-4 rounded-2xl bg-purple-50 border-l-4 border-purple-500 shadow-sm hover:shadow-md transition-all cursor-pointer hover:scale-[1.02]"
+  >
+    <div className="flex justify-between items-start">
+      <div>
+        <h3 className="text-base font-semibold text-gray-800">
+          Candidates
+        </h3>
+        <p className="text-sm text-gray-500 mt-1">
+          Total applicants received
+        </p>
+      </div>
+      <FileText className="h-6 w-6 text-purple-600" />
+    </div>
+
+    <div className="mt-2 text-2xl sm:text-3xl font-bold text-gray-900">
+      {stats.candidates}
+    </div>
+
+    <div className="mt-3 flex justify-end items-center text-xs text-purple-600">
+      <span className="mr-1">View details</span>
+      <ArrowRight className="h-4 w-4" />
+    </div>
+  </Card>
+
+
+  {/* Interviews */}
+  <Card
+    onClick={() => navigate("/interviews")}
+    className="p-3 sm:p-4 rounded-2xl bg-orange-50 border-l-4 border-orange-500 shadow-sm hover:shadow-md transition-all cursor-pointer hover:scale-[1.02]"
+  >
+    <div className="flex justify-between items-start">
+      <div>
+        <h3 className="text-base font-semibold text-gray-800">
+          Interviews
+        </h3>
+        <p className="text-sm text-gray-500 mt-1">
+          Scheduled interviews
+        </p>
+      </div>
+      <Calendar className="h-6 w-6 text-amber-600" />
+    </div>
+
+    <div className="mt-2 text-2xl sm:text-3xl font-bold text-gray-900">
+      {stats.interviews?.total_interviews || 0}
+    </div>
+
+    <div className="mt-3 flex justify-end items-center text-xs text-amber-600">
+      <span className="mr-1">View details</span>
+      <ArrowRight className="h-4 w-4" />
+    </div>
+  </Card>
+
+</div>
         {/* Interview Pipeline Widget */}
         {stats.interviews && (
           <Card className="shadow-xl" data-testid="interview-pipeline-card">
