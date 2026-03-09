@@ -171,7 +171,7 @@ export const ClientDashboard = () => {
               </CardTitle>
             </CardHeader>
             <CardContent className="p-6">
-              <div className="grid grid-cols-2 md:grid-cols-6 gap-4">
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
                 <div className="text-center p-3 bg-amber-50 rounded-lg">
                   <Clock className="h-6 w-6 mx-auto mb-1 text-amber-600" />
                   <p className="text-2xl font-bold text-amber-800">{stats.interviews.awaiting_confirmation}</p>

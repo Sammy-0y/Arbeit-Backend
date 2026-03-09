@@ -166,7 +166,7 @@ export const InterviewsListPage = () => {
               <CardTitle className="text-lg">Interview Pipeline</CardTitle>
             </CardHeader>
             <CardContent className="p-4">
-              <div className="grid grid-cols-3 md:grid-cols-6 gap-3">
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
                 {[
                   { status: 'Awaiting Candidate Confirmation', count: pipelineStats.awaiting_confirmation, color: 'amber', label: 'Awaiting' },
                   { status: 'Confirmed', count: pipelineStats.confirmed, color: 'blue', label: 'Confirmed' },

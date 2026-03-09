@@ -71,7 +71,7 @@ export const InterviewPipelineStats = ({ token, clientId = null }) => {
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="grid grid-cols-3 md:grid-cols-6 gap-2">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2">
           {STAT_CONFIGS.map(({ key, label, icon: Icon, color }) => (
             <div 
               key={key}

@@ -43,3 +43,11 @@ code {
         --radius: 0.5rem;
     }
 }
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}

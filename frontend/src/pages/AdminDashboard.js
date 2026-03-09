@@ -214,7 +214,7 @@ export const AdminDashboard = () => {
               </CardTitle>
             </CardHeader>
             <CardContent className="p-6">
-              <div className="grid grid-cols-2 md:grid-cols-6 gap-4">
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
                 <div 
                   className="text-center p-3 bg-amber-50 rounded-lg cursor-pointer hover:bg-amber-100 hover:shadow-md transition-all"
                   onClick={() => navigate('/interviews?status=Awaiting Candidate Confirmation')}
