@@ -186,16 +186,25 @@ export const ClientsList = () => {
                 <p className="text-sm">Create your first client to get started</p>
               </div>
             ) : (
-              <div className="w-full overflow-x-auto">
+              <div className="w-full">
                 <table className="w-full table-auto"  data-testid="clients-table">
                   <thead>
-                    <tr className="border-b-2 border-blue-200 whitespace-nowrap">
-                      <th className="w-[40%] text-left p-3 font-semibold text-blue-900">Company Name</th>
-<th className="w-[15%] text-left p-3 font-semibold text-blue-900">Status</th>
-<th className="w-[15%] text-left p-3 font-semibold text-blue-900">Users</th>
-<th className="w-[15%] text-left p-3 font-semibold text-blue-900">Created</th>
-<th className="w-[15%] text-right p-3 font-semibold text-blue-900 whitespace-nowrap">Actions</th>
-                      <th className="text-right p-3 font-semibold text-blue-900 whitespace-nowrap">Actions</th>
+                    <tr className="border-b-2 border-blue-200">
+                      <th className="text-left p-3 font-semibold text-blue-900">Company Name</th>
+
+<th className="text-left p-3 font-semibold text-blue-900">Status</th>
+
+<th className="hidden md:table-cell text-left p-3 font-semibold text-blue-900">
+Users
+</th>
+
+<th className="hidden md:table-cell text-left p-3 font-semibold text-blue-900">
+Created
+</th>
+
+<th className="text-right p-3 font-semibold text-blue-900 whitespace-nowrap">
+Actions
+</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -208,7 +217,7 @@ export const ClientsList = () => {
                         <td className="p-3">
                           <div className="flex items-center gap-2">
                             <Building2 className="h-4 w-4 text-blue-600" />
-                            <span className="font-medium">{client.company_name}</span>
+                            <span className="font-medium break-words">{client.company_name}</span>
                           </div>
                         </td>
                         <td className="p-3">
@@ -219,16 +228,16 @@ export const ClientsList = () => {
                             {client.status}
                           </Badge>
                         </td>
-                        <td className="p-3">
-                          <div className="flex items-center gap-1 text-gray-600">
-                            <Users className="h-4 w-4" />
-                            <span>{client.user_count || 0}</span>
-                          </div>
-                        </td>
-                        <td className="p-3 text-gray-600">
-                          {new Date(client.created_at).toLocaleDateString()}
-                        </td>
-                        <td className="p-3 text-right whitespace-nowrap">
+                       <td className="hidden md:table-cell p-3">
+  <div className="flex items-center gap-1 text-gray-600">
+    <Users className="h-4 w-4" />
+    <span>{client.user_count || 0}</span>
+  </div>
+</td>
+                        <td className="hidden md:table-cell p-3 text-gray-600">
+  {new Date(client.created_at).toLocaleDateString()}
+</td>
+                        <td className="p-3 text-right">
                           <div className="flex gap-2 justify-end">
                             <Button
                               onClick={() => navigate(`/clients/${client.client_id}`)}
