@@ -30,6 +30,9 @@ export const Login = () => {
     setLoading(true);
 
     const result = await login(email, password);
+
+setCurrentPassword(password);
+setShowPasswordChange(true);
 console.log("LOGIN RESULT:", result);
 
     if (result.success) {
