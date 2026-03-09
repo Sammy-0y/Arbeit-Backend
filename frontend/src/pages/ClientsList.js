@@ -88,7 +88,7 @@ export const ClientsList = () => {
   };
 
   return (
-    <div className="min-h-screen w-full overflow-x-hidden">
+    <div className="min-h-screen w-full">
       {/* Top Sticky Header */}
 <header className="relative bg-gradient-to-r from-blue-900 to-blue-800 text-white p-4 shadow-lg">
   <div className="w-full flex items-center px-8">
@@ -100,7 +100,7 @@ export const ClientsList = () => {
   </div>
 </div>
 </header>
-      <div className="w-full max-w-full px-4 md:px-8 py-6">
+      <div className="w-full max-w-7xl mx-auto px-4 md:px-8 py-6">
         <Card className="shadow-xl mb-6">
           <CardHeader className="bg-gradient-to-r from-blue-900 to-blue-800 text-white">
             <div className="flex justify-between items-center">
