@@ -15,11 +15,11 @@ export const GovernanceLayout = () => {
   const isActive = (path) => location.pathname === path;
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#F7F5F1' }}>
+    <div className="min-h-screen w-full overflow-x-hidden" style={{ backgroundColor: "#F7F5F1" }}>
       {/* Header */}
       <div className="bg-gradient-to-r from-gray-900 to-gray-800 text-white p-6 shadow-lg">
-        <div className="container mx-auto max-w-7xl">
-          <div className="flex items-center justify-between mb-4">
+        <div className="w-full max-w-7xl mx-auto px-4">
+          <div className="flex flex-wrap items-center justify-between mb-4 gap-3">
             <div className="flex items-center gap-3">
               <Shield className="h-8 w-8 text-amber-400" />
               <h1 
