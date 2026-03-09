@@ -186,8 +186,8 @@ export const ClientsList = () => {
                 <p className="text-sm">Create your first client to get started</p>
               </div>
             ) : (
-              <div className="w-full overflow-x-auto block">
-                <table className="w-full min-w-[1000px] table-fixed" data-testid="clients-table">
+              <div className="w-full overflow-x-auto">
+                <table className="w-full min-w-[900px] table-auto"  data-testid="clients-table">
                   <thead>
                     <tr className="border-b-2 border-blue-200 whitespace-nowrap">
                       <th className="w-[40%] text-left p-3 font-semibold text-blue-900">Company Name</th>
