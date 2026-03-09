@@ -264,11 +264,11 @@ export const CandidateDetail = () => {
         </div>
       </nav>
 
-      <div className="w-full px-4 md:px-8 py-6">
+      <div className="w-full max-w-6xl mx-auto px-4 md:px-8 py-6">
         {/* Header Card */}
         <Card className="mb-6 shadow-xl border-0 overflow-hidden">
           <CardHeader className="bg-gradient-to-r from-blue-900 to-blue-800 text-white">
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+            <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 w-full">
               <div>
                 <CardTitle className="text-3xl mb-2" data-testid="candidate-name">
                   {candidate.name}
@@ -278,7 +278,7 @@ export const CandidateDetail = () => {
                     {candidate.status}
                   </Badge>
                   {candidate.email && (
-                    <span className="text-blue-200 text-sm">{candidate.email}</span>
+                    <span className="text-blue-200 text-sm break-all">{candidate.email}</span>
                   )}
                   {candidate.phone && (
                     <span className="text-blue-200 text-sm">• {candidate.phone}</span>
@@ -287,7 +287,7 @@ export const CandidateDetail = () => {
               </div>
               
               {canEdit && (
-                <div className="flex items-center gap-3">
+                <div className="flex flex-col sm:flex-row sm:items-center gap-3 w-full sm:w-auto">
                   <div className="flex items-center gap-2">
                     <span className="text-sm text-blue-200">Status:</span>
                     <Select
