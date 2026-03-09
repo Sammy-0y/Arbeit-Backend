@@ -187,14 +187,14 @@ export const ClientsList = () => {
               </div>
             ) : (
               <div className="w-full overflow-x-auto">
-                <table className="w-full" data-testid="clients-table">
+                <table className="w-full min-w-[900px]" data-testid="clients-table">
                   <thead>
                     <tr className="border-b-2 border-blue-200">
                       <th className="text-left p-3 font-semibold text-blue-900">Company Name</th>
                       <th className="text-left p-3 font-semibold text-blue-900">Status</th>
                       <th className="text-left p-3 font-semibold text-blue-900">Users</th>
                       <th className="text-left p-3 font-semibold text-blue-900">Created</th>
-                      <th className="text-right p-3 font-semibold text-blue-900">Actions</th>
+                      <th className="text-right p-3 font-semibold text-blue-900 whitespace-nowrap">Actions</th>
                     </tr>
                   </thead>
                   <tbody>
