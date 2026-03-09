@@ -187,13 +187,14 @@ export const ClientsList = () => {
               </div>
             ) : (
               <div className="w-full overflow-x-auto block">
-                <table className="min-w-[1000px] w-full table-auto" data-testid="clients-table">
+                <table className="w-full min-w-[1000px] table-fixed" data-testid="clients-table">
                   <thead>
                     <tr className="border-b-2 border-blue-200 whitespace-nowrap">
-                      <th className="text-left p-3 font-semibold text-blue-900">Company Name</th>
-                      <th className="text-left p-3 font-semibold text-blue-900">Status</th>
-                      <th className="text-left p-3 font-semibold text-blue-900">Users</th>
-                      <th className="text-left p-3 font-semibold text-blue-900">Created</th>
+                      <th className="w-[40%] text-left p-3 font-semibold text-blue-900">Company Name</th>
+<th className="w-[15%] text-left p-3 font-semibold text-blue-900">Status</th>
+<th className="w-[15%] text-left p-3 font-semibold text-blue-900">Users</th>
+<th className="w-[15%] text-left p-3 font-semibold text-blue-900">Created</th>
+<th className="w-[15%] text-right p-3 font-semibold text-blue-900 whitespace-nowrap">Actions</th>
                       <th className="text-right p-3 font-semibold text-blue-900 whitespace-nowrap">Actions</th>
                     </tr>
                   </thead>
@@ -227,7 +228,7 @@ export const ClientsList = () => {
                         <td className="p-3 text-gray-600">
                           {new Date(client.created_at).toLocaleDateString()}
                         </td>
-                        <td className="p-3 text-right">
+                        <td className="p-3 text-right whitespace-nowrap">
                           <div className="flex gap-2 justify-end">
                             <Button
                               onClick={() => navigate(`/clients/${client.client_id}`)}
