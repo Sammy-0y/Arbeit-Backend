@@ -205,8 +205,8 @@ export const AdminDashboard = () => {
 
 </div>
         {/* Interview Pipeline Widget */}
-        {stats.interviews && (
-          <Card className="shadow-xl" data-testid="interview-pipeline-card">
+{stats.interviews && (
+  <Card className="shadow-xl mt-6" data-testid="interview-pipeline-card">
             <CardHeader className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white">
               <CardTitle className="text-xl flex items-center gap-2">
                 <TrendingUp className="h-5 w-5" />
