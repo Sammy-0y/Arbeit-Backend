@@ -44,8 +44,8 @@ export const GovernanceLayout = () => {
 
       {/* Navigation */}
       <div className="border-b border-amber-200 bg-white/50 backdrop-blur-sm">
-        <div className="container mx-auto max-w-7xl px-6">
-          <nav className="flex gap-1">
+        <div className="w-full max-w-7xl mx-auto px-4">
+          <nav className="flex flex-wrap gap-2">
             {navItems.map(item => {
               const Icon = item.icon;
               return (
