@@ -100,7 +100,7 @@ export const ClientsList = () => {
   </div>
 </div>
 </header>
-      <div className="w-full max-w-7xl mx-auto px-4 md:px-8 py-6">
+      <div className="w-full px-4 md:px-8 py-6">
         <Card className="shadow-xl mb-6">
           <CardHeader className="bg-gradient-to-r from-blue-900 to-blue-800 text-white">
             <div className="flex justify-between items-center">
@@ -187,7 +187,7 @@ export const ClientsList = () => {
               </div>
             ) : (
               <div className="w-full overflow-x-auto">
-                <table className="w-full min-w-[900px] table-auto"  data-testid="clients-table">
+                <table className="w-full table-auto"  data-testid="clients-table">
                   <thead>
                     <tr className="border-b-2 border-blue-200 whitespace-nowrap">
                       <th className="w-[40%] text-left p-3 font-semibold text-blue-900">Company Name</th>

@@ -246,9 +246,9 @@ export const CandidateDetail = () => {
   const isImage = ['jpg', 'jpeg', 'png', 'gif', 'webp'].includes(fileExtension);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-teal-50" data-testid="candidate-detail-page">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-teal-50 overflow-x-hidden w-full" data-testid="candidate-detail-page">
       <nav className="bg-blue-900 text-white p-4 shadow-lg">
-        <div className="container mx-auto flex justify-between items-center">
+        <div className="w-full px-6 flex justify-between items-center">
           <Button
             onClick={() => navigate(-1)}
             variant="ghost"
@@ -264,7 +264,7 @@ export const CandidateDetail = () => {
         </div>
       </nav>
 
-      <div className="container mx-auto p-8 max-w-5xl">
+      <div className="w-full px-4 md:px-8 py-6">
         {/* Header Card */}
         <Card className="mb-6 shadow-xl border-0 overflow-hidden">
           <CardHeader className="bg-gradient-to-r from-blue-900 to-blue-800 text-white">
@@ -483,7 +483,7 @@ export const CandidateDetail = () => {
       ? candidate.cv_file_url
       : `${BACKEND_URL}${candidate.cv_file_url}`
   )}&embedded=true`}
-  className="w-full h-[600px]"
+  className="w-full max-w-full h-[600px]"
   title="Resume PDF"
   data-testid="resume-iframe"
 />
