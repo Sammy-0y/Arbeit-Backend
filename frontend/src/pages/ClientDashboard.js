@@ -59,25 +59,6 @@ export const ClientDashboard = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-teal-50">
-      <nav className="bg-blue-900 text-white p-4 shadow-lg" data-testid="client-nav">
-        <div className="container mx-auto flex justify-between items-center">
-          <h1 className="text-2xl font-bold" data-testid="client-nav-title">Arbeit Talent Portal</h1>
-          <div className="flex items-center gap-4">
-            <span className="text-sm" data-testid="client-user-info">
-              {user?.name}
-            </span>
-            <Button
-              onClick={handleLogout}
-              variant="outline"
-              className="border-white text-white hover:bg-blue-800"
-              data-testid="logout-button"
-            >
-              Logout
-            </Button>
-          </div>
-        </div>
-      </nav>
-
       <div className="container mx-auto p-8">
         <Card className="shadow-xl mb-8" data-testid="client-dashboard-card">
           <CardHeader className="bg-gradient-to-r from-blue-900 to-blue-800 text-white">
