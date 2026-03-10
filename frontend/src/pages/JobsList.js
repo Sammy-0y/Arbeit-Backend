@@ -98,7 +98,7 @@ export const JobsList = () => {
     <div className="flex items-center gap-4">
       <Briefcase className="h-5 w-5" />
       <h1 className="text-xl font-bold">
-        Job Requirements
+        Manage All The Job Requirements
       </h1>
     </div>
 
