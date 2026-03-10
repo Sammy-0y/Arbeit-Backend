@@ -59,8 +59,8 @@ export const ClientDashboard = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-teal-50">
-      <div className="container mx-auto p-8">
-        <Card className="shadow-xl mb-8" data-testid="client-dashboard-card">
+      <div className="w-full max-w-7xl mx-auto px-6 py-4">
+        
           <CardHeader className="bg-gradient-to-r from-blue-900 to-blue-800 text-white">
             <CardTitle className="text-3xl" data-testid="client-dashboard-title">
               Client Dashboard
@@ -78,28 +78,29 @@ export const ClientDashboard = () => {
               </div>
 
               {/* Quick Stats */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
-                <div className="bg-teal-50 rounded-lg p-4 text-center">
+              <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 mt-6">
+                <div className="bg-teal-50 border-2 border-teal-500 rounded-xl p-4 text-center hover:shadow-lg transition">
                   <Briefcase className="h-8 w-8 mx-auto mb-2 text-teal-600" />
                   <p className="text-2xl font-bold text-teal-900">{stats.jobs}</p>
                   <p className="text-sm text-gray-600">Active Jobs</p>
                 </div>
-                <div className="bg-purple-50 rounded-lg p-4 text-center">
+                <div className="bg-purple-50 border-2 border-purple-500 rounded-xl p-4 text-center hover:shadow-lg transition">
                   <Users className="h-8 w-8 mx-auto mb-2 text-purple-600" />
                   <p className="text-2xl font-bold text-purple-900">{stats.candidates}</p>
                   <p className="text-sm text-gray-600">Candidates</p>
                 </div>
-                <div className="bg-amber-50 rounded-lg p-4 text-center">
+                <div className="bg-amber-50 border-2 border-amber-500 rounded-xl p-4 text-center hover:shadow-lg transition">
                   <Calendar className="h-8 w-8 mx-auto mb-2 text-amber-600" />
                   <p className="text-2xl font-bold text-amber-900">{stats.interviews?.total_interviews || 0}</p>
                   <p className="text-sm text-gray-600">Interviews</p>
                 </div>
-                <div className="bg-green-50 rounded-lg p-4 text-center">
+                <div className="bg-green-50 border-2 border-green-500 rounded-xl p-4 text-center hover:shadow-lg transition">
                   <CheckCircle className="h-8 w-8 mx-auto mb-2 text-green-600" />
                   <p className="text-2xl font-bold text-green-900">{stats.interviews?.completed || 0}</p>
                   <p className="text-sm text-gray-600">Completed</p>
                 </div>
               </div>
+              
 
               {/* Navigation Cards */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
@@ -111,9 +112,11 @@ export const ClientDashboard = () => {
                   <CardContent className="p-6">
                     <h3 className="text-lg font-semibold text-blue-900 mb-2">My Job Requirements</h3>
                     <p className="text-gray-600 text-sm">Create and manage job postings</p>
-                    <Button className="mt-3 bg-blue-900 hover:bg-blue-800 w-full">
-                      Open
-                    </Button>
+                    <div className="flex justify-end mt-6">
+                    <span className="text-blue-700 font-semibold">
+                       Manage →
+                    </span>
+                    </div>
                   </CardContent>
                 </Card>
 
@@ -125,9 +128,11 @@ export const ClientDashboard = () => {
                   <CardContent className="p-6">
                     <h3 className="text-lg font-semibold text-blue-900 mb-2">Review Candidates</h3>
                     <p className="text-gray-600 text-sm">Review and approve candidates</p>
-                    <Button className="mt-3 bg-blue-900 hover:bg-blue-800 w-full">
-                      Open
-                    </Button>
+                    <div className="flex justify-end mt-6">
+                    <span className="text-blue-700 font-semibold">
+                     Review → 
+                    </span>
+                    </div>
                   </CardContent>
                 </Card>
 
@@ -140,7 +145,7 @@ export const ClientDashboard = () => {
               </div>
             </div>
           </CardContent>
-        </Card>
+        
 
         {/* Interview Pipeline Widget */}
         {stats.interviews && stats.interviews.total_interviews > 0 && (
