@@ -43,16 +43,17 @@ style={{ backgroundImage: `url(${isClientUser ? clientSidebarBg : sidebarBg})` }
           Dashboard
         </NavLink>
 
-        <NavLink to="/clients" onClick={closeSidebar} className={({ isActive }) =>
-  `flex items-center gap-3 px-4 py-3 rounded-2xl transition-all duration-200 ${
-    isActive
-      ? "bg-blue-600 text-white shadow-md"
-      : "text-white hover:bg-blue-500/20"
-  }`
-}>
-  <Users size={18} />
-          Clients
-        </NavLink>
+        {!isClientUser && (
+<NavLink to="/clients" onClick={closeSidebar} className={({ isActive }) =>
+`flex items-center gap-3 px-4 py-3 rounded-2xl transition-all duration-200 ${
+isActive
+? "bg-blue-600 text-white shadow-md"
+: "text-white hover:bg-blue-500/20"
+}`}>
+<Users size={18} />
+Clients
+</NavLink>
+)}
 
         <NavLink to="/jobs" onClick={closeSidebar} className={({ isActive }) =>
   `flex items-center gap-3 px-4 py-3 rounded-2xl transition-all duration-200 ${
@@ -76,27 +77,29 @@ style={{ backgroundImage: `url(${isClientUser ? clientSidebarBg : sidebarBg})` }
           Candidates
         </NavLink>
 
-        <NavLink to="/governance" onClick={closeSidebar} className={({ isActive }) =>
-  `flex items-center gap-3 px-4 py-3 rounded-2xl transition-all duration-200 ${
-    isActive
-      ? "bg-blue-600 text-white shadow-md"
-      : "text-white hover:bg-blue-500/20"
-  }`
-}>
-  <Shield size={18} />
-          Governance
-        </NavLink>
+        {!isClientUser && (
+<NavLink to="/governance" onClick={closeSidebar} className={({ isActive }) =>
+`flex items-center gap-3 px-4 py-3 rounded-2xl transition-all duration-200 ${
+isActive
+? "bg-blue-600 text-white shadow-md"
+: "text-white hover:bg-blue-500/20"
+}`}>
+<Shield size={18} />
+Governance
+</NavLink>
+)}
 
-        <NavLink to="/candidate-portal-management" onClick={closeSidebar} className={({ isActive }) =>
-  `flex items-center gap-3 px-4 py-3 rounded-2xl transition-all duration-200 ${
-    isActive
-      ? "bg-blue-600 text-white shadow-md"
-      : "text-white hover:bg-blue-500/20"
-  }`
-}>
-  <UserCog size={18} />
-          Portal Users
-        </NavLink>
+       {!isClientUser && (
+<NavLink to="/candidate-portal-management" onClick={closeSidebar} className={({ isActive }) =>
+`flex items-center gap-3 px-4 py-3 rounded-2xl transition-all duration-200 ${
+isActive
+? "bg-blue-600 text-white shadow-md"
+: "text-white hover:bg-blue-500/20"
+}`}>
+<UserCog size={18} />
+Portal Users
+</NavLink>
+)}
       </nav>
     </div>
 
