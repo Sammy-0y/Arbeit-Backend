@@ -63,7 +63,7 @@ export default function AdminLayout() {
     {/* Right Side */}
     <div className="flex items-center gap-4">
 
-      <NotificationBell />
+      {!isClientUser && <NotificationBell />}
 
       <span className="text-sm text-blue-200">
         Welcome back
