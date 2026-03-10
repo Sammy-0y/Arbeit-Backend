@@ -130,55 +130,56 @@ export const CandidateDashboard = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50">
       {/* Header */}
-      <nav className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white p-4 shadow-lg">
-        <div className="container mx-auto flex justify-between items-center">
-          <h1 className="text-xl font-bold">Arbeit Talent Portal</h1>
-          <div className="flex items-center gap-4">
-            <div className="flex items-center gap-2">
-              <User className="h-5 w-5" />
-              <span className="text-sm">{candidate?.name}</span>
-            </div>
-            <Button
-              onClick={handleLogout}
-              variant="ghost"
-              size="sm"
-              className="text-white hover:bg-white/20"
-              data-testid="logout-button"
-            >
-              <LogOut className="h-4 w-4 mr-2" />
-              Logout
-            </Button>
-          </div>
-        </div>
-      </nav>
+      <nav className="bg-[#2f3f8f] text-white p-4 rounded-b-2xl sticky top-0 z-50">
+  <div className="container mx-auto flex justify-between items-center">
+    <h1 className="text-xl font-bold">Arbeit Talent Portal</h1>
+
+    <div className="flex items-center gap-4">
+      <div className="flex items-center gap-2">
+        <User className="h-5 w-5" />
+        <span className="text-sm">{candidate?.name}</span>
+      </div>
+
+      <Button
+        onClick={handleLogout}
+        size="sm"
+        className="text-white"
+      >
+        <LogOut className="h-4 w-4 mr-2" />
+        Logout
+      </Button>
+    </div>
+  </div>
+</nav>
 
       <div className="container mx-auto p-6 max-w-4xl">
         {/* Welcome Section */}
         <Card className="mb-6 border-0 shadow-lg overflow-hidden">
-          <div className="bg-gradient-to-r from-indigo-500 to-purple-500 p-6 text-white">
+          <div className="bg-blue-800 p-6 text-white">
             <h2 className="text-2xl font-bold mb-1">Welcome, {candidate?.name}!</h2>
             <p className="text-indigo-100">Manage your interview schedule below</p>
           </div>
+          </Card>
           <CardContent className="p-6">
-            <div className="grid grid-cols-3 gap-4 text-center">
-              <div className="p-4 bg-amber-50 rounded-lg">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+              <div className="p-6 bg-amber-50 border-2 border-amber-500 rounded-2xl">
                 <Clock className="h-8 w-8 mx-auto mb-2 text-amber-600" />
                 <p className="text-2xl font-bold text-amber-800">{pendingInterviews.length}</p>
                 <p className="text-sm text-gray-600">Pending Action</p>
               </div>
-              <div className="p-4 bg-green-50 rounded-lg">
+              <div className="p-6 bg-green-50 border-2 border-green-500 rounded-2xl">
                 <Calendar className="h-8 w-8 mx-auto mb-2 text-green-600" />
                 <p className="text-2xl font-bold text-green-800">{upcomingInterviews.length}</p>
                 <p className="text-sm text-gray-600">Upcoming</p>
               </div>
-              <div className="p-4 bg-gray-50 rounded-lg">
+              <div className="p-6 bg-gray-50 border-2 border-gray-400 rounded-2xl">
                 <CheckCircle className="h-8 w-8 mx-auto mb-2 text-gray-600" />
                 <p className="text-2xl font-bold text-gray-800">{pastInterviews.length}</p>
                 <p className="text-sm text-gray-600">Completed</p>
               </div>
             </div>
           </CardContent>
-        </Card>
+    
 
         {loading ? (
           <div className="flex items-center justify-center py-12">
