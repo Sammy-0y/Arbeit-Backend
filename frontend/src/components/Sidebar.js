@@ -1,4 +1,6 @@
-import { NavLink } from "react-router-dom";import sidebarBg from "../assets/sidebar-bg.png";
+import { NavLink } from "react-router-dom";
+import sidebarBg from "../assets/sidebar-bg.png";
+import clientSidebarBg from "../assets/client-sidebar-bg.png";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 import {
@@ -13,7 +15,7 @@ import {
 } from "lucide-react";
 export default function Sidebar({ closeSidebar }) {
   const navigate = useNavigate();
-const { logout } = useAuth();
+const { logout, isClientUser } = useAuth();
 
 const handleLogout = () => {
   logout();
@@ -24,7 +26,7 @@ const handleLogout = () => {
 className={`fixed md:static top-0 left-0 h-screen w-56 flex flex-col
 bg-no-repeat bg-top bg-cover z-50
 transform transition-transform duration-300`}
-style={{ backgroundImage: `url(${sidebarBg})` }}
+style={{ backgroundImage: `url(${isClientUser ? clientSidebarBg : sidebarBg})` }}
 >
     
     {/* MENU */}
