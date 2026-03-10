@@ -58,27 +58,25 @@ export const ClientDashboard = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-teal-50">
+    <div className="min-h-screen ">
       <div className="w-full max-w-7xl mx-auto px-6 py-4">
-        
-          <CardHeader className="bg-gradient-to-r from-blue-900 to-blue-800 text-white">
-            <CardTitle className="text-3xl" data-testid="client-dashboard-title">
-              Client Dashboard
-            </CardTitle>
-          </CardHeader>
+        <Card className="shadow-lg mb-0 rounded-2xl">
+          <CardContent className="p-8">
+            <div className="border-l-4 border-teal-500 pl-4">
+              <h2 className="text-2xl font-semibold text-blue-900 mb-2">
+                Welcome, {user?.name}!
+              </h2>
+              <p className="text-gray-600 text-lg">
+                Full system access enabled. Manage clients, jobs, candidates, and interviews.
+              </p>
+            </div>
+          </CardContent>
+        </Card>
           <CardContent className="p-8">
             <div className="space-y-6">
-              <div className="border-l-4 border-teal-500 pl-4" data-testid="client-welcome">
-                <h2 className="text-2xl font-semibold text-blue-900 mb-2">
-                  Welcome, {user?.name}!
-                </h2>
-                <p className="text-gray-600 text-lg">
-                  Manage your job requirements and review qualified candidates submitted by Arbeit.
-                </p>
-              </div>
-
+              
               {/* Quick Stats */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 mt-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 mt-2">
                 <div className="bg-teal-50 border-2 border-teal-500 rounded-xl p-4 text-center hover:shadow-lg transition">
                   <Briefcase className="h-8 w-8 mx-auto mb-2 text-teal-600" />
                   <p className="text-2xl font-bold text-teal-900">{stats.jobs}</p>
