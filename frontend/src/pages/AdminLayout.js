@@ -3,7 +3,9 @@ import { useState } from "react";
 import { Menu, X, LayoutDashboard } from "lucide-react";
 import Sidebar from "../components/Sidebar";
 import { NotificationBell } from "../components/notifications";
+import { useAuth } from "../contexts/AuthContext";
 export default function AdminLayout() {
+  const { isClientUser } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
   return (
   <div className="flex min-h-screen bg-[#eef4ff]">
@@ -53,7 +55,7 @@ export default function AdminLayout() {
       <LayoutDashboard className="h-5 w-5 text-blue-200" />
 
       <span className="font-semibold">
-        Admin Dashboard
+         {isClientUser ? "Client Hiring Portal" : "Admin Dashboard"}
       </span>
 
     </div>
